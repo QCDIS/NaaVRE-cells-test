@@ -15,8 +15,6 @@ id = args.id
 
 
 
-
-
 if param_density==1: 
     param_CountingStrategy = 'density0'
     
