@@ -28,8 +28,18 @@ dplyr = ''
 library(dplyr)
 
 
+param_datain = 'input/Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv'
 
+param_CalcType = 'advanced'
 
+param_biovolume = 1 # if 1 it is calculated, if 0 it is not calculated
+param_totalbiovolume = 1
+param_density = 1
+param_surfacearea = 1
+param_surfacevolumeratio = 1
+param_cellcarboncontent = 1
+param_totalcarboncontent = 1
+param_CountingStrategy = ''
 
 if (param_density==1) {param_CountingStrategy <- 'density0'}
 
@@ -69,11 +79,17 @@ write.table(df.datain,paste(output_dfdatain,sep=''),row.names=FALSE,sep = ";",de
 
 
 # capturing outputs
+file <- file(paste0('/tmp/transectcounting_', id, '.json'))
+writeLines(toJSON(transectcounting, auto_unbox=TRUE), file)
+close(file)
 file <- file(paste0('/tmp/settlingvolume_', id, '.json'))
 writeLines(toJSON(settlingvolume, auto_unbox=TRUE), file)
 close(file)
-file <- file(paste0('/tmp/output_dfmerged_', id, '.json'))
-writeLines(toJSON(output_dfmerged, auto_unbox=TRUE), file)
+file <- file(paste0('/tmp/diameterofsedimentationchamber_', id, '.json'))
+writeLines(toJSON(diameterofsedimentationchamber, auto_unbox=TRUE), file)
+close(file)
+file <- file(paste0('/tmp/index_', id, '.json'))
+writeLines(toJSON(index, auto_unbox=TRUE), file)
 close(file)
 file <- file(paste0('/tmp/numberoftransects_', id, '.json'))
 writeLines(toJSON(numberoftransects, auto_unbox=TRUE), file)
@@ -81,18 +97,12 @@ close(file)
 file <- file(paste0('/tmp/diameteroffieldofview_', id, '.json'))
 writeLines(toJSON(diameteroffieldofview, auto_unbox=TRUE), file)
 close(file)
-file <- file(paste0('/tmp/transectcounting_', id, '.json'))
-writeLines(toJSON(transectcounting, auto_unbox=TRUE), file)
+file <- file(paste0('/tmp/dilutionfactor_', id, '.json'))
+writeLines(toJSON(dilutionfactor, auto_unbox=TRUE), file)
 close(file)
 file <- file(paste0('/tmp/numberofcountedfields_', id, '.json'))
 writeLines(toJSON(numberofcountedfields, auto_unbox=TRUE), file)
 close(file)
-file <- file(paste0('/tmp/index_', id, '.json'))
-writeLines(toJSON(index, auto_unbox=TRUE), file)
-close(file)
-file <- file(paste0('/tmp/dilutionfactor_', id, '.json'))
-writeLines(toJSON(dilutionfactor, auto_unbox=TRUE), file)
-close(file)
-file <- file(paste0('/tmp/diameterofsedimentationchamber_', id, '.json'))
-writeLines(toJSON(diameterofsedimentationchamber, auto_unbox=TRUE), file)
+file <- file(paste0('/tmp/output_dfmerged_', id, '.json'))
+writeLines(toJSON(output_dfmerged, auto_unbox=TRUE), file)
 close(file)
