@@ -56,9 +56,6 @@ if (conf_density==1) {countingStrategy <- 'density0'}
 
 
 # capturing outputs
-file <- file(paste0('/tmp/auth_', id, '.json'))
-writeLines(toJSON(auth, auto_unbox=TRUE), file)
-close(file)
 file <- file(paste0('/tmp/diameteroffieldofview_', id, '.json'))
 writeLines(toJSON(diameteroffieldofview, auto_unbox=TRUE), file)
 close(file)
