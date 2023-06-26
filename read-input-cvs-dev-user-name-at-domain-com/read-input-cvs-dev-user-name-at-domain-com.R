@@ -52,45 +52,6 @@ countingStrategy = ''
 if (conf_density==1) {countingStrategy <- 'density0'}
 
 
-file_content <- getURL(paste0(param_hostname,conf_datain1), curl = getCurlHandle(userpwd = auth$UserPwd))
-writeLines(file_content, conf_local_datain1)
-
-df.datain=read.csv(conf_local_datain1,stringsAsFactors=FALSE,sep = ";", dec = ".")
-measurementremarks = tolower(df.datain$measurementremarks) # eliminate capital letters
-df.datain$measurementremarks <- tolower(df.datain$measurementremarks) # eliminate capital letters
-index = c(1:nrow(df.datain))
-df.datain$index <- c(1:nrow(df.datain)) # needed to restore rows order later
-
-file_content <- getURL(paste0(param_hostname,conf_datain2), curl = getCurlHandle(userpwd = auth$UserPwd))
-writeLines(file_content, conf_local_datain2)
-
-df.operator<-read.csv(conf_local_datain2,stringsAsFactors=FALSE,sep = ";", dec = ".") ## load internal database 
-df.operator[df.operator==('no')]<-NA
-df.operator[df.operator==('see note')]<-NA
-
-df.merged <- merge(x = df.datain, y = df.operator, by = c("scientificname","measurementremarks"), all.x = TRUE)
-
-diameterofsedimentationchamber = 'diameterofsedimentationchamber'
-diameteroffieldofview = 'diameteroffieldofview'
-transectcounting = 'transectcounting'
-numberofcountedfields = 'numberofcountedfields'
-numberoftransects = 'numberoftransects'
-settlingvolume = 'settlingvolume'
-dilutionfactor = 'dilutionfactor'
-
-if(!'diameterofsedimentationchamber'%in%names(df.merged))df.merged$diameterofsedimentationchamber=NA
-if(!'diameteroffieldofview'%in%names(df.merged))df.merged$diameteroffieldofview=NA
-if(!'transectcounting'%in%names(df.merged))df.merged$transectcounting=NA
-if(!'numberofcountedfields'%in%names(df.merged))df.merged$numberofcountedfields=df.merged$transectcounting
-if(!'numberoftransects'%in%names(df.merged))df.merged$numberoftransects==df.merged$transectcounting
-if(!'settlingvolume'%in%names(df.merged))df.merged$settlingvolume=NA
-if(!'dilutionfactor'%in%names(df.merged))df.merged$dilutionfactor=1
-
-output_dfmerged = 'output/dfmerged.csv'
-output_dfdatain = 'output/dfdatain.csv'
-write.table(df.merged,paste(output_dfmerged,sep=''),row.names=FALSE,sep = ";",dec = ".",quote=FALSE)
-write.table(df.datain,paste(output_dfdatain,sep=''),row.names=FALSE,sep = ";",dec = ".",quote=FALSE)
-
 
 
 
