@@ -8,9 +8,6 @@ library(jsonlite)
 option_list = list
 
 option_list = list(
-make_option(c("--id"), action="store", default=NA, type='character', help="my description")
-
-
 make_option(c("--param_hostname"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--param_login"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--param_password"), action="store", default=NA, type='character', help="my description")
@@ -27,11 +24,11 @@ param_login = opt$param_login
 param_password = opt$param_password
 
 
-conf_density = 1
-conf_local_datain2 = 'input/Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv'
-conf_local_datain1 = 'input/Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv'
-conf_datain2 = 'traits/input/2_FILEinformativo_OPERATORE.csv'
 conf_datain1 = 'traits/input/Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv'
+conf_datain2 = 'traits/input/2_FILEinformativo_OPERATORE.csv'
+conf_density = 1
+conf_local_datain1 = 'input/Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv'
+conf_local_datain2 = 'input/Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv'
 
 
 conf_density = 1
@@ -92,7 +89,6 @@ output_dfmerged = 'output/dfmerged.csv'
 output_dfdatain = 'output/dfdatain.csv'
 write.table(df.merged,paste(output_dfmerged,sep=''),row.names=FALSE,sep = ";",dec = ".",quote=FALSE)
 write.table(df.datain,paste(output_dfdatain,sep=''),row.names=FALSE,sep = ";",dec = ".",quote=FALSE)
-
 
 
 
