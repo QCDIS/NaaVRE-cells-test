@@ -8,6 +8,7 @@ library(jsonlite)
 option_list = list
 
 option_list = list(
+make_option(c("--id"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--param_hostname"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--param_login"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--param_password"), action="store", default=NA, type='character', help="my description")
