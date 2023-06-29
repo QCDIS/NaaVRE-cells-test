@@ -9,8 +9,6 @@ option_list = list
 
 option_list = list(
 make_option(c("--id"), action="store", default=NA, type='character', help="my description")
-
-
 )
 
 # set input parameters accordingly
