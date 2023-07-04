@@ -58,7 +58,7 @@ file_content <- getURL(paste0(param_hostname,output_dfmerged_1), curl = getCurlH
 writeLines(file_content, output_dfmerged_1)
 
 
-df.merged=read.csv(output_dfmerged,stringsAsFactors=FALSE,sep = ";", dec = ".")
+df.merged=read.csv(output_dfmerged_1,stringsAsFactors=FALSE,sep = ";", dec = ".")
 
 formulaformissingdimension = '' 
 formulaformissingdimensionsimplified = '' 
@@ -122,7 +122,7 @@ for (file in outputs) {
     print(response)
 }
 
-output_dfmerged_2 = paste0(conf_output,'/dfmerged.csv')
+output_dfmerged = paste0(conf_output,'/dfmerged.csv')
 
 
 
