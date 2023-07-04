@@ -25,18 +25,18 @@ param_login = opt$param_login
 param_password = opt$param_password
 
 
-conf_datain2 = 'traits/input/2_FILEinformativo_OPERATORE.csv'
 conf_datain1 = "traits/input/Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv"
-conf_density = 1
+conf_datain2 = 'traits/input/2_FILEinformativo_OPERATORE.csv'
 conf_output = 'traits/output'
 conf_local <- c('traits','traits/input','traits/output')
-
-
-conf_datain2 = 'traits/input/2_FILEinformativo_OPERATORE.csv'
-conf_datain1 = "traits/input/Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv"
 conf_density = 1
+
+
+conf_datain1 = "traits/input/Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv"
+conf_datain2 = 'traits/input/2_FILEinformativo_OPERATORE.csv'
 conf_output = 'traits/output'
 conf_local <- c('traits','traits/input','traits/output')
+conf_density = 1
 
 install.packages("RCurl",repos = "http://cran.us.r-project.org")
 RCurl = ''
