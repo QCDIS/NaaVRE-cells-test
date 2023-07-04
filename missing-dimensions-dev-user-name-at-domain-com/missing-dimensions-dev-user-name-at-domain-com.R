@@ -9,7 +9,7 @@ option_list = list
 
 option_list = list(
 make_option(c("--id"), action="store", default=NA, type='character', help="my description"),
-make_option(c("--output_dfmerged_1"), action="store", default=NA, type='character', help="my description"),
+make_option(c("--output_dfmerged_2"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--param_CalcType"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--param_hostname"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--param_login"), action="store", default=NA, type='character', help="my description"),
@@ -21,7 +21,7 @@ opt = parse_args(OptionParser(option_list=option_list))
 
 
 id = opt$id
-output_dfmerged_1 = opt$output_dfmerged_1
+output_dfmerged_2 = opt$output_dfmerged_2
 
 param_CalcType = opt$param_CalcType
 param_hostname = opt$param_hostname
@@ -29,12 +29,12 @@ param_login = opt$param_login
 param_password = opt$param_password
 
 
-conf_output = 'traits/output'
 conf_local <- c('traits','traits/input','traits/output')
+conf_output = 'traits/output'
 
 
-conf_output = 'traits/output'
 conf_local <- c('traits','traits/input','traits/output')
+conf_output = 'traits/output'
 
 install.packages("RCurl",repos = "http://cran.us.r-project.org")
 RCurl = ''
@@ -42,7 +42,6 @@ library(RCurl)
 install.packages("httr",repos = "http://cran.us.r-project.org")
 httr = ''
 library(httr)
-
 
 directory = ''
 for (directory in conf_local) {
@@ -54,11 +53,11 @@ for (directory in conf_local) {
 
 auth = basicTextGatherer()
 cred = paste(param_login, param_password, sep = ":")
-file_content <- getURL(paste0(param_hostname,output_dfmerged_1), curl = getCurlHandle(userpwd = cred))
-writeLines(file_content, output_dfmerged_1)
+file_content <- getURL(paste0(param_hostname,output_dfmerged_2), curl = getCurlHandle(userpwd = cred))
+writeLines(file_content, output_dfmerged_2)
 
 
-df.merged=read.csv(output_dfmerged_1,stringsAsFactors=FALSE,sep = ";", dec = ".")
+df.merged=read.csv(output_dfmerged_2,stringsAsFactors=FALSE,sep = ";", dec = ".")
 
 formulaformissingdimension = '' 
 formulaformissingdimensionsimplified = '' 
@@ -98,10 +97,10 @@ if(param_CalcType=='advanced'){
   df.merged = df.merged.concat
 }
 
-output_dfmerged = 'traits/output/dfmerged.csv'
-write.table(df.merged,output_dfmerged,row.names=FALSE,sep = ";",dec = ".",quote=FALSE) 
+output_dfmerged_3 = 'traits/output/dfmerged.csv'
+write.table(df.merged,output_dfmerged_3,row.names=FALSE,sep = ";",dec = ".",quote=FALSE) 
 
-outputs <- c(output_dfmerged)
+outputs <- c(output_dfmerged_3)
 
 file = ''
 size = 0 
@@ -122,7 +121,7 @@ for (file in outputs) {
     print(response)
 }
 
-output_dfmerged = paste0(conf_output,'/dfmerged.csv')
+output_dfmerged_3 = paste0(conf_output,'/dfmerged.csv')
 
 
 
