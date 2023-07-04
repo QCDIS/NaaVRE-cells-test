@@ -114,11 +114,11 @@ for (file in outputs) {
     print(response)
 }
 
-output_dfmerged = paste0(conf_output,'/dfmerged.csv')
+output_dfmerged_1 = paste0(conf_output,'/dfmerged.csv')
 
 
 
 # capturing outputs
-file <- file(paste0('/tmp/output_dfmerged_', id, '.json'))
-writeLines(toJSON(output_dfmerged, auto_unbox=TRUE), file)
+file <- file(paste0('/tmp/output_dfmerged_1_', id, '.json'))
+writeLines(toJSON(output_dfmerged_1, auto_unbox=TRUE), file)
 close(file)
