@@ -5,24 +5,20 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
+arg_parser.add_argument('--a', action='store', type=str, required='True', dest='a')
+
+arg_parser.add_argument('--b', action='store', type=float, required='True', dest='b')
+
 
 args = arg_parser.parse_args()
 print(args)
 
 id = args.id
 
+a = args.a
+b = args.b
 
 
 
-a = 'value'
-b = 3
+print(a * b)
 
-import json
-filename = "/tmp/b_" + id + ".json"
-file_b = open(filename, "w")
-file_b.write(json.dumps(b))
-file_b.close()
-filename = "/tmp/a_" + id + ".json"
-file_a = open(filename, "w")
-file_a.write(json.dumps(a))
-file_a.close()
