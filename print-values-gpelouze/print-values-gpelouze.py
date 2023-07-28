@@ -7,7 +7,7 @@ arg_parser.add_argument('--id', action='store', type=str, required=True, dest='i
 
 arg_parser.add_argument('--a', action='store', type=str, required='True', dest='a')
 
-arg_parser.add_argument('--b', action='store', type=float, required='True', dest='b')
+arg_parser.add_argument('--b', action='store', type=int, required='True', dest='b')
 
 
 args = arg_parser.parse_args()
