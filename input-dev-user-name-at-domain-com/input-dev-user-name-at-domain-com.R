@@ -21,12 +21,14 @@ id = opt$id
 
 
 
-a = 2 
-numbers <- c(a, 4, 6, 8, 10)
+
+a = 2
+
+b = a + 1
 
 
 
 # capturing outputs
-file <- file(paste0('/tmp/numbers_', id, '.json'))
-writeLines(toJSON(numbers, auto_unbox=TRUE), file)
+file <- file(paste0('/tmp/b_', id, '.json'))
+writeLines(toJSON(b, auto_unbox=TRUE), file)
 close(file)
