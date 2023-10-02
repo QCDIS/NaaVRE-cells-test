@@ -16,13 +16,8 @@ id = args.id
 
 
 a = 'value'
-b = 3
 
 import json
-filename = "/tmp/b_" + id + ".json"
-file_b = open(filename, "w")
-file_b.write(json.dumps(b))
-file_b.close()
 filename = "/tmp/a_" + id + ".json"
 file_a = open(filename, "w")
 file_a.write(json.dumps(a))
