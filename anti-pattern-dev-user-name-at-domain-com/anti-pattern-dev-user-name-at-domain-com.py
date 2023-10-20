@@ -5,6 +5,8 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
+arg_parser.add_argument('--a', action='store', type=int, required='True', dest='a')
+
 arg_parser.add_argument('--b', action='store', type=int, required='True', dest='b')
 
 
@@ -13,10 +15,10 @@ print(args)
 
 id = args.id
 
+a = args.a
 b = args.b
 
 
 
-if b<3:
-    print('Bingo!')
+some_list = range(a, b+1)
 
