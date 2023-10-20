@@ -24,5 +24,5 @@ msg = args.msg
 
 
 some_list = range(a, b+1)
-msg+='a'
+msg+= 'a'
 
