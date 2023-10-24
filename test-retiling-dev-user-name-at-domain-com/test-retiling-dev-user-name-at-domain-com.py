@@ -6,7 +6,7 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--split_laz_files', action='store', type=str, required='True', dest='split_laz_files')
+arg_parser.add_argument('--split_laz_files', action='store', type=str, required=True, dest='split_laz_files')
 
 
 args = arg_parser.parse_args()
