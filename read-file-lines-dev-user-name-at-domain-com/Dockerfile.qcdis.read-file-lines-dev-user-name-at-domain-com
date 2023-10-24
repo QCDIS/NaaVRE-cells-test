@@ -12,3 +12,4 @@ RUN apt update -y && apt upgrade -y && apt install jq -y
 COPY --from=build /venv /venv
 COPY read-file-lines-dev-user-name-at-domain-com.py .
 
+mkdir -p $HOME/NaaVRE/data
