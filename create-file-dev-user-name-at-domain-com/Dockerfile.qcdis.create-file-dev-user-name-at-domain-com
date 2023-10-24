@@ -12,4 +12,4 @@ RUN apt update -y && apt upgrade -y && apt install jq -y
 COPY --from=build /venv /venv
 COPY create-file-dev-user-name-at-domain-com.py .
 
-mkdir -p $HOME/NaaVRE/data
+RUN mkdir -p $HOME/NaaVRE/data
