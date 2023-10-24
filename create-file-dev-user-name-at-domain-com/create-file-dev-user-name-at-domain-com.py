@@ -14,9 +14,9 @@ id = args.id
 
 
 
-conf_data_folder = os.path.join(os.path.expanduser('~'),'NaaVRE','data')
+conf_data_folder = os.path.join('/tmp','data')
 
-conf_data_folder = os.path.join(os.path.expanduser('~'),'NaaVRE','data')
+conf_data_folder = os.path.join('/tmp','data')
 
 L = ["a\n", "b\n", "c\n"]
 file_path =  os.path.join(conf_data_folder,'hello.txt')
