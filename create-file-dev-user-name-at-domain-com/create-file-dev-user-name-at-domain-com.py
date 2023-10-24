@@ -1,0 +1,31 @@
+import os
+
+import argparse
+arg_parser = argparse.ArgumentParser()
+
+arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
+
+
+
+args = arg_parser.parse_args()
+print(args)
+
+id = args.id
+
+
+
+conf_data_folder = os.path.join(os.path.expanduser('~'),'NaaVRE','data')
+
+conf_data_folder = os.path.join(os.path.expanduser('~'),'NaaVRE','data')
+
+L = ["a\n", "b\n", "c\n"]
+file_path =  os.path.join(conf_data_folder,'hello.txt')
+fp = open(file_path, 'w')
+fp.writelines(L)
+fp.close()
+
+import json
+filename = "/tmp/file_path_" + id + ".json"
+file_file_path = open(filename, "w")
+file_file_path.write(json.dumps(file_path))
+file_file_path.close()
