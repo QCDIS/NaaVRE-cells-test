@@ -15,7 +15,7 @@ print(args)
 id = args.id
 
 import json
-split_laz_files = json.loads(args.split_laz_files.replace('\'','').replace('[','["').replace(']','"]'))
+split_laz_files = json.loads(args.split_laz_files)
 
 
 conf_min_x = "-113107.81"
