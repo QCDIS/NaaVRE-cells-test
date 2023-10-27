@@ -14,7 +14,7 @@ print(args)
 id = args.id
 
 import json
-lines = json.loads(args.lines)
+lines = json.loads(args.lines.replace('\'','').replace('[','["').replace(']','"]'))
 
 
 
