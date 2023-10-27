@@ -11,4 +11,3 @@ FROM python:3.11-slim-bullseye AS runtime
 RUN apt update -y && apt upgrade -y && apt install jq -y
 COPY --from=build /venv /venv
 COPY message1-dev-user-name-at-domain-com.py .
-
