@@ -14,7 +14,7 @@ print(args)
 id = args.id
 
 import json
-msg = json.loads(args.msg)
+msg = args.msg
 
 
 
