@@ -5,7 +5,7 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--a', action='store', type=int, required='True', dest='a')
+arg_parser.add_argument('--count', action='store', type=int, required='True', dest='count')
 
 
 args = arg_parser.parse_args()
@@ -13,12 +13,12 @@ print(args)
 
 id = args.id
 
-a = json.loads(args.a.replace("'", '' ))
+count = json.loads(args.count.replace("'", '' ))
 
 
 
 
-b = a + 1
+b = count + 1
 
 import json
 filename = "/tmp/b_" + id + ".json"
