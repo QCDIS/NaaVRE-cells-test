@@ -14,7 +14,7 @@ print(args)
 id = args.id
 
 import json
-file_path = json.loads(args.file_path)
+file_path = args.file_path
 
 
 
