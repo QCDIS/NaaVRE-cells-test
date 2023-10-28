@@ -13,7 +13,7 @@ print(args)
 
 id = args.id
 
-file_path = args.file_path
+file_path = json.loads(args.file_path.replace("'", '' ))
 
 
 
