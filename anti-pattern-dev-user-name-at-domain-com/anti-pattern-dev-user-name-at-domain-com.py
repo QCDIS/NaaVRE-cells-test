@@ -16,8 +16,8 @@ print(args)
 id = args.id
 
 import json
-b = json.loads(args.b)
-count = json.loads(args.count)
+b = args.b
+count = args.count
 
 
 
