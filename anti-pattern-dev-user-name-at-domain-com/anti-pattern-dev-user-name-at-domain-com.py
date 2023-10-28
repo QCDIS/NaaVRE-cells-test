@@ -5,7 +5,7 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--b', action='store', type=int, required='True', dest='b')
+arg_parser.add_argument('--a', action='store', type=int, required='True', dest='a')
 
 arg_parser.add_argument('--count', action='store', type=int, required='True', dest='count')
 
@@ -16,12 +16,12 @@ print(args)
 id = args.id
 
 import json
-b = args.b
+a = args.a
 count = args.count
 
 
 
-some_list = range(count, b+1)
+some_list = range(count, a+1)
 
 msg = '1'
 
