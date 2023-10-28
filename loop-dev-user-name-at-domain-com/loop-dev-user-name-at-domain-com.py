@@ -13,8 +13,7 @@ print(args)
 
 id = args.id
 
-import json
-msg = json.loads(args.msg.replace('\'', ''))
+msg = args.msg
 
 
 
