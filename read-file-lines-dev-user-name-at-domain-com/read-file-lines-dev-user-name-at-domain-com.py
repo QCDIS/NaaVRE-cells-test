@@ -13,7 +13,8 @@ print(args)
 
 id = args.id
 
-file_path = args.file_path
+import json
+file_path = json.loads(args.file_path)
 
 
 
