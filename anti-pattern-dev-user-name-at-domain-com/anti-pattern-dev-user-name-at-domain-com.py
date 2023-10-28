@@ -5,9 +5,9 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--b', action='store', type=int, required='True', dest='b')
+arg_parser.add_argument('--a', action='store', type=int, required='True', dest='a')
 
-arg_parser.add_argument('--count', action='store', type=int, required='True', dest='count')
+arg_parser.add_argument('--b', action='store', type=int, required='True', dest='b')
 
 
 args = arg_parser.parse_args()
@@ -15,18 +15,10 @@ print(args)
 
 id = args.id
 
-import json
-b = json.loads(args.b.replace("'", '' ))
-count = json.loads(args.count.replace("'", '' ))
+a = args.a
+b = args.b
 
 
 
-some_list = range(count, b+1)
+some_list = range(a, b+1)
 
-msg = '1'
-
-import json
-filename = "/tmp/msg_" + id + ".json"
-file_msg = open(filename, "w")
-file_msg.write(json.dumps(msg))
-file_msg.close()
