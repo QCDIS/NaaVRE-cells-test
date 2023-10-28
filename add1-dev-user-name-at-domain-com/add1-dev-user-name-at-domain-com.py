@@ -19,5 +19,10 @@ count = args.count
 
 
 
-a = count + 1
+b = count + 1
 
+import json
+filename = "/tmp/b_" + id + ".json"
+file_b = open(filename, "w")
+file_b.write(json.dumps(b))
+file_b.close()
