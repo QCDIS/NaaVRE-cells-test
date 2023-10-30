@@ -14,7 +14,7 @@ print(args)
 id = args.id
 
 import json
-lines = json.loads(args.lines.replace('\'','').replace('[','["').replace(']','"]'))
+lines = json.loads(args.lines)
 
 
 
@@ -24,3 +24,8 @@ for l in lines:
     count += 1
     print("Line{}: {}".format(count, l.strip()))
 
+import json
+filename = "/tmp/count_" + id + ".json"
+file_count = open(filename, "w")
+file_count.write(json.dumps(count))
+file_count.close()
