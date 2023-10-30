@@ -12,7 +12,6 @@ print(args)
 
 id = args.id
 
-import json
 
 
 conf_data_folder = os.path.join('/tmp','data')
