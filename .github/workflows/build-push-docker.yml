@@ -25,21 +25,21 @@ on:
         required: false
 
 jobs:
-#   choose-runner:
-#     runs-on: ubuntu-latest
-#     outputs:
-#       runner: ${{ steps.choose-runner.outputs.runner }}
-#     steps:
-#       - id: choose-runner
-#         uses: QCDIS/choose-action-runner@v2
-#         with:
-#           preferred-runner: ${{ vars.PREFERRED_ACTIONS_RUNNER }}
-#           fallback-runner: ubuntu-latest
-#           github-token: ${{ secrets.RUNNER_ACCESS_TOKEN }}
+  choose-runner:
+    runs-on: ubuntu-latest
+    outputs:
+      runner: ${{ steps.choose-runner.outputs.runner }}
+    steps:
+      - id: choose-runner
+        uses: QCDIS/choose-action-runner@v2
+        with:
+          preferred-runner: ${{ vars.PREFERRED_ACTIONS_RUNNER }}
+          fallback-runner: ubuntu-latest
+          github-token: ${{ secrets.RUNNER_ACCESS_TOKEN }}
 
   build-push:
-    # needs: [choose-runner]
-    runs-on: ubuntu-latest #${{ needs.choose-runner.outputs.runner }}
+    needs: [choose-runner]
+    runs-on: ${{ needs.choose-runner.outputs.runner }}
     name: ${{github.event.inputs.id}}
     steps:
       - name: Login to GitHub Container Registry
