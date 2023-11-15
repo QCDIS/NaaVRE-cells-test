@@ -25,18 +25,18 @@ param_login = opt$param_login
 param_password = opt$param_password
 
 
-conf_local <- c('traits','traits/input','traits/output')
 conf_density = 1
-conf_datain2 = 'traits/input/2_FILEinformativo_OPERATORE.csv'
-conf_output = 'traits/output'
 conf_datain1 = "metacat/d1/mn/v2/object/urn%3Auuid%3A9772e31b-3c53-417e-8c7d-5eac0bea12bc"
+conf_output = 'traits/output'
+conf_local <- c('traits','traits/input','traits/output')
+conf_datain2 = 'traits/input/2_FILEinformativo_OPERATORE.csv'
 
 
-conf_local <- c('traits','traits/input','traits/output')
 conf_density = 1
-conf_datain2 = 'traits/input/2_FILEinformativo_OPERATORE.csv'
-conf_output = 'traits/output'
 conf_datain1 = "metacat/d1/mn/v2/object/urn%3Auuid%3A9772e31b-3c53-417e-8c7d-5eac0bea12bc"
+conf_output = 'traits/output'
+conf_local <- c('traits','traits/input','traits/output')
+conf_datain2 = 'traits/input/2_FILEinformativo_OPERATORE.csv'
 
 install.packages("RCurl",repos = "http://cran.us.r-project.org")
 RCurl = ''
