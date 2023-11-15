@@ -29,12 +29,12 @@ param_login = opt$param_login
 param_password = opt$param_password
 
 
-conf_local <- c('traits','traits/input','traits/output')
 conf_output = 'traits/output'
+conf_local <- c('traits','traits/input','traits/output')
 
 
-conf_local <- c('traits','traits/input','traits/output')
 conf_output = 'traits/output'
+conf_local <- c('traits','traits/input','traits/output')
 
 install.packages("RCurl",repos = "http://cran.us.r-project.org")
 RCurl = ''
