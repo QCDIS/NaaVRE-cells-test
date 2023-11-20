@@ -34,12 +34,12 @@ conf_remote_path_norm = pathlib.Path(param_remote_path_root + '/norm_'+param_use
 
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 conf_remote_path_norm = pathlib.Path(param_remote_path_root + '/norm_'+param_username)
-remote_path_norm
+print(remote_path_norm)
 
 tiles = [f for f in list_remote(get_wdclient(conf_wd_opts), pathlib.Path(conf_remote_path_norm).as_posix())
              if f.lower().endswith('.laz')]
 
-tiles
+print(tiles)
 
 import json
 filename = "/tmp/tiles_" + id + ".json"
