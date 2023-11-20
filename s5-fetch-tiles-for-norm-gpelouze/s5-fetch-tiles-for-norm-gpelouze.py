@@ -35,10 +35,11 @@ conf_remote_path_retiled = pathlib.Path(param_remote_path_root + '/retiled_'+par
 
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 conf_remote_path_retiled = pathlib.Path(param_remote_path_root + '/retiled_'+param_username)
-remote_path_norm
+print(remote_path_norm)
 
 tiles = [t.strip('/') for t in list_remote(get_wdclient(conf_wd_opts), conf_remote_path_retiled.as_posix())
          if fnmatch.fnmatch(t, 'tile_*_*/')]
+print(tiles)
 
 import json
 filename = "/tmp/tiles_" + id + ".json"
