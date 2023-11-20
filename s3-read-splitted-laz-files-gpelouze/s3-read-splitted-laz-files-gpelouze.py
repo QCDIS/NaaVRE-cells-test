@@ -34,10 +34,11 @@ conf_remote_path_split = pathlib.Path(param_remote_path_root + '/split_'+param_u
 
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 conf_remote_path_split = pathlib.Path(param_remote_path_root + '/split_'+param_username)
-remote_path_retiled
+print(remote_path_retiled)
 
 split_laz_files = [f for f in list_remote(get_wdclient(conf_wd_opts), pathlib.Path(conf_remote_path_split).as_posix())
              if f.lower().endswith('.laz')]
+print(split_laz_files)
 
 import json
 filename = "/tmp/split_laz_files_" + id + ".json"
