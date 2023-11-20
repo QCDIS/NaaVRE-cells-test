@@ -40,7 +40,7 @@ conf_local_tmp = pathlib.Path('/tmp')
 conf_remote_path_targets = pathlib.Path(param_remote_path_root + '/targets_'+param_username)
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 
-remote_path_targets
+print(remote_path_targets)
 
 remote_path_geotiffs = conf_remote_path_geotiffs
 
