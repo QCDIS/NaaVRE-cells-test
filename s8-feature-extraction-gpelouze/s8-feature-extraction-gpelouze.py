@@ -58,6 +58,7 @@ conf_remote_path_targets = pathlib.Path(param_remote_path_root + '/targets_'+par
 conf_local_tmp = pathlib.Path('/tmp')
 conf_remote_path_norm = pathlib.Path(param_remote_path_root + '/norm_'+param_username)
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
+print(tiles)
 
 remote_path_targets = str(conf_remote_path_targets)
 
@@ -109,7 +110,7 @@ for t in tiles:
     processing = DataProcessing(t, tile_index=idx,label=t).config(feature_extraction_input).setup_webdav_client(conf_wd_opts)
     processing.run()
 
-remote_path_targets
+print(remote_path_targets)
 
 import json
 filename = "/tmp/remote_path_targets_" + id + ".json"
