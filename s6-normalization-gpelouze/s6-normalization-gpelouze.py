@@ -42,7 +42,7 @@ conf_remote_path_retiled = pathlib.Path(param_remote_path_root + '/retiled_'+par
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 
 
-tiles
+print(tiles)
 
 remote_path_norm = str(conf_remote_path_norm)
 
@@ -70,7 +70,7 @@ for tile in tiles:
     dp = DataProcessing(tile, label=tile).config(normalization_input_).setup_webdav_client(conf_wd_opts)
     dp.run()
 
-remote_path_norm
+print(remote_path_norm)
 
 import json
 filename = "/tmp/remote_path_norm_" + id + ".json"
