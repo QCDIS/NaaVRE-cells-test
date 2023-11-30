@@ -87,7 +87,6 @@ if(!'dilutionfactor'%in%names(df.merged))df.merged[,'dilutionfactor']=1
 
 
 output_dfmerged_1 = 'traits/output/dfmerged.csv'
-write.table(df.merged,output_dfmerged_1,row.names=FALSE,sep = ";",dec = ".",quote=FALSE)
 
 outputs <- c(output_dfmerged_1)
 
@@ -110,7 +109,6 @@ for (file in outputs) {
     print(response)
 }
 
-output_dfmerged_1 = paste0(conf_output,'/dfmerged.csv')
 
 
 
