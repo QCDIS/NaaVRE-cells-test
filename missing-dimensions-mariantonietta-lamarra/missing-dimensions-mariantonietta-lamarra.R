@@ -36,6 +36,7 @@ conf_local <- c('traits','traits/input','traits/output')
 conf_output = 'traits/output'
 conf_local <- c('traits','traits/input','traits/output')
 
+
 install.packages("RCurl",repos = "http://cran.us.r-project.org")
 RCurl = ''
 library(RCurl)
@@ -55,10 +56,12 @@ for (directory in conf_local) {
 auth = basicTextGatherer()
 cred = paste(param_login, param_password, sep = ":")
 file_content <- getURL(paste0(param_hostname,output_dfmerged_1), curl = getCurlHandle(userpwd = cred))
+writeLines(file_content, output_dfmerged_1)
 
 
+df.merged=read.csv(output_dfmerged_1,stringsAsFactors=FALSE,sep = ";", dec = ".")
 
-df.merged=read.csv(text=file_content,stringsAsFactors=FALSE,sep = ";", dec = ".")
+
 
 formulaformissingdimension = '' 
 formulaformissingdimensionsimplified = '' 
