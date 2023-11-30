@@ -91,9 +91,6 @@ write.table(df.merged,output_dfmerged_1,row.names=FALSE,sep = ";",dec = ".",quot
 
 outputs <- c(output_dfmerged_1)
 
-download_file = paste0(param_hostname,conf_datain1)
-print(download_file)
-file_content <- getURL(download_file, curl = getCurlHandle(userpwd = cred))
 
 file = ''
 size = 0 
@@ -102,7 +99,7 @@ file_name = ''
 response = ''
 for (file in outputs) {
     # Read the file content
-    #file_content <- readBin(file, what = "raw", n = file.info(file)$size)
+    file_content <- readBin(file, what = "raw", n = file.info(file)$size)
     file_name <- basename(file)
     # Create a PUT request
     response <- httr::PUT(
@@ -114,7 +111,6 @@ for (file in outputs) {
     print(response)
 }
 
-output_dfmerged_1 = paste0(conf_output,'/dfmerged.csv')
 
 
 
