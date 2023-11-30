@@ -72,7 +72,7 @@ df.datain[,'index'] = c(1:nrow(df.datain)) # needed to restore rows order later
 
 file_content <- getURL(paste0(param_hostname,conf_datain2), curl = getCurlHandle(userpwd = cred))
 
-df.operator=read.csv(conf_datain2,stringsAsFactors=FALSE,sep = ",", dec = ".") # load internal database 
+df.operator=read.csv(text=file_content,stringsAsFactors=FALSE,sep = ",", dec = ".") # load internal database
 head(df.operator, n = 3)
 df.operator[df.operator==('no')]<-NA
 df.operator[df.operator==('see note')]<-NA
