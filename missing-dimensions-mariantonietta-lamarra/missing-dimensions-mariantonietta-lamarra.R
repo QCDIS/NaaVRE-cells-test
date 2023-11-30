@@ -98,7 +98,6 @@ if(param_CalcType=='advanced'){
 }
 
 output_dfmerged_2 = 'traits/output/dfmerged.csv'
-write.table(df.merged,output_dfmerged_2,row.names=FALSE,sep = ";",dec = ".",quote=FALSE) 
 
 outputs <- c(output_dfmerged_2)
 
@@ -121,7 +120,6 @@ for (file in outputs) {
     print(response)
 }
 
-output_dfmerged_2 = paste0(conf_output,'/dfmerged.csv')
 
 
 
