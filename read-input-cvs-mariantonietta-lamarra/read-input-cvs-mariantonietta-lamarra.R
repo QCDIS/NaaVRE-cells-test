@@ -26,17 +26,17 @@ param_password = opt$param_password
 
 
 conf_density = 1
-conf_datain1 = "metacat/d1/mn/v2/object/urn%3Auuid%3A9772e31b-3c53-417e-8c7d-5eac0bea12bc"
+conf_datain1 = 'Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv'
 conf_output = 'traits/output'
+conf_datain2 = '2_FILEinformativo_OPERATORE.csv'
 conf_local <- c('traits','traits/input','traits/output')
-conf_datain2 = 'traits/input/2_FILEinformativo_OPERATORE.csv'
 
 
 conf_density = 1
-conf_datain1 = "metacat/d1/mn/v2/object/urn%3Auuid%3A9772e31b-3c53-417e-8c7d-5eac0bea12bc"
+conf_datain1 = 'Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv'
 conf_output = 'traits/output'
+conf_datain2 = '2_FILEinformativo_OPERATORE.csv'
 conf_local <- c('traits','traits/input','traits/output')
-conf_datain2 = 'traits/input/2_FILEinformativo_OPERATORE.csv'
 
 install.packages("RCurl",repos = "http://cran.us.r-project.org")
 RCurl = ''
@@ -63,17 +63,16 @@ cred = paste(param_login, param_password, sep = ":")
 download_file = paste0(param_hostname,conf_datain1)
 print(download_file)
 file_content <- getURL(download_file, curl = getCurlHandle(userpwd = cred))
-writeLines(file_content, conf_datain1)
 
-df.datain=read.csv(conf_datain1,stringsAsFactors=FALSE,sep = ";", dec = ".")
+
+df.datain=read.csv(text=file_content,stringsAsFactors=FALSE,sep = ";", dec = ".")
 head(df.datain, n = 3)
 df.datain[,'measurementremarks'] = tolower(df.datain[,'measurementremarks']) # eliminate capital letters
 df.datain[,'index'] = c(1:nrow(df.datain)) # needed to restore rows order later
 
 file_content <- getURL(paste0(param_hostname,conf_datain2), curl = getCurlHandle(userpwd = cred))
-writeLines(file_content, conf_datain2)
 
-df.operator=read.csv(conf_datain2,stringsAsFactors=FALSE,sep = ";", dec = ".") # load internal database 
+df.operator=read.csv(conf_datain2,stringsAsFactors=FALSE,sep = ",", dec = ".") # load internal database 
 head(df.operator, n = 3)
 df.operator[df.operator==('no')]<-NA
 df.operator[df.operator==('see note')]<-NA
