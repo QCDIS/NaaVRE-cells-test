@@ -55,10 +55,13 @@ for (directory in conf_local) {
 
 auth = basicTextGatherer()
 cred = paste(param_login, param_password, sep = ":")
-file_content <- getURL(paste0(param_hostname,output_dfmerged_1), curl = getCurlHandle(userpwd = cred))
+download_file = paste0(param_hostname,output_dfmerged_1)
+print(download_file)
+file_content <- getURL(download_file, curl = getCurlHandle(userpwd = cred))
 
 
 df.merged=read.csv(text=file_content,stringsAsFactors=FALSE,sep = ";", dec = ".")
+
 
 
 
