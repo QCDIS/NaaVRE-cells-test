@@ -55,7 +55,7 @@ for (directory in conf_local) {
 
 auth = basicTextGatherer()
 cred = paste(param_login, param_password, sep = ":")
-download_file = paste0(param_hostname,output_dfmerged_1)
+download_file = paste(param_hostname,output_dfmerged_1,sep='')
 print(download_file)
 file_content <- getURL(download_file, curl = getCurlHandle(userpwd = cred))
 
