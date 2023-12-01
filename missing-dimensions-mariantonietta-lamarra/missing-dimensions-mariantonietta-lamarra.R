@@ -52,6 +52,7 @@ for (directory in conf_local) {
   }
 }
 
+print(output_dfmerged_1)
 
 auth = basicTextGatherer()
 cred = paste(param_login, param_password, sep = ":")
