@@ -13,10 +13,6 @@ arg_parser.add_argument('--c', action='store', type=str, required='True', dest='
 
 arg_parser.add_argument('--d', action='store', type=float, required='True', dest='d')
 
-arg_parser.add_argument('--e', action='store', type=int, required='True', dest='e')
-
-arg_parser.add_argument('--f', action='store', type=int, required='True', dest='f')
-
 
 args = arg_parser.parse_args()
 print(args)
@@ -28,12 +24,10 @@ import json
 b = json.loads(args.b)
 c = args.c
 d = args.d
-e = args.e
-f = args.f
 
 
 
-print(a, c, d, e, f)
+print(a, c, d)
 for v in b:
     print(v)
 
