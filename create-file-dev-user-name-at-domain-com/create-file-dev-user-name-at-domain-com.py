@@ -1,3 +1,6 @@
+from os.path import isfile
+from os.path import join
+from os import listdir
 import os
 
 import argparse
@@ -23,6 +26,10 @@ file_path =  os.path.join(conf_data_folder,'hello.txt')
 fp = open(file_path, 'w')
 fp.writelines(L)
 fp.close()
+
+onlyfiles = [f for f in listdir(conf_data_folder) if isfile(join(conf_data_folder, f))]
+
+print(onlyfiles)
 
 import json
 filename = "/tmp/file_path_" + id + ".json"
