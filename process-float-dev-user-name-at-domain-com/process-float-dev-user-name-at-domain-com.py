@@ -13,7 +13,7 @@ print(args)
 
 id = args.id
 
-c = args.c.replace('"', '')
+c = args.c
 
 
 
