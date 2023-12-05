@@ -13,8 +13,7 @@ print(args)
 
 id = args.id
 
-a = args.a
-a.replace("'", "")
+a = args.a.replace("'", "")
 
 
 
