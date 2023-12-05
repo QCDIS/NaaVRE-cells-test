@@ -17,6 +17,7 @@ print(args)
 
 id = args.id
 
+file_path.replace("'", "")
 file_path = args.file_path
 
 
