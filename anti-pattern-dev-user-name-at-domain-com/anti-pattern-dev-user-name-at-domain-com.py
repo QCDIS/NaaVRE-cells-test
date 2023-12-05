@@ -15,10 +15,10 @@ print(args)
 
 id = args.id
 
-a.replace("'", "")
 a = args.a
-b.replace("'", "")
+a.replace("'", "")
 b = args.b
+b.replace("'", "")
 
 
 
