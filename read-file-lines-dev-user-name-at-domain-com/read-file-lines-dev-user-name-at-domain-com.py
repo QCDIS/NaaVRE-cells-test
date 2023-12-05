@@ -9,7 +9,7 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--file_path', action='store', type=str, required='True', dest='file_path')
+arg_parser.add_argument('--file_path', action='store', type=str, required=True, dest='file_path')
 
 
 args = arg_parser.parse_args()
