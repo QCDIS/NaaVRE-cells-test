@@ -15,8 +15,8 @@ print(args)
 
 id = args.id
 
-a = args.a.replace('"', '')
-b = args.b.replace('"', '')
+a = args.a
+b = args.b
 
 
 
