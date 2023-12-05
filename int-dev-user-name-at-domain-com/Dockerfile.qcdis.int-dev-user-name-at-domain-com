@@ -1,5 +1,5 @@
 
-FROM qcdis/miniconda3 AS build
+FROM qcdis/miniconda3-pdal:v0.14 AS build
 COPY int-dev-user-name-at-domain-com-environment.yaml .
 RUN conda env update -n venv -f int-dev-user-name-at-domain-com-environment.yaml
 RUN conda-pack -n venv -o /tmp/env.tar && \
@@ -11,4 +11,3 @@ FROM python:3.11-slim-bullseye AS runtime
 RUN apt update -y && apt upgrade -y && apt install jq -y
 COPY --from=build /venv /venv
 COPY int-dev-user-name-at-domain-com.py .
-
