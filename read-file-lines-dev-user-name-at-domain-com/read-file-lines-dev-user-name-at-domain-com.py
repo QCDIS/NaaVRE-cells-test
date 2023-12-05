@@ -17,8 +17,8 @@ print(args)
 
 id = args.id
 
-file_path.replace("'", "")
 file_path = args.file_path
+file_path.replace("'", "")
 
 
 conf_data_folder = os.path.join('/tmp','data')
