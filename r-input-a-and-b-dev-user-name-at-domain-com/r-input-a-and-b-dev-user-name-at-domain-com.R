@@ -8,8 +8,7 @@ library(jsonlite)
 
 option_list = list(
 
-
-make_option(c("--id"), action="store", default=NA, type="character", help="my description", required = TRUE)
+make_option(c("--id"), action="store", default=NA, type="character", help="my description")
 
 )
 
