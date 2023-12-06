@@ -16,7 +16,7 @@ make_option(c("--id"), action="store", default=NA, type="character", help="my de
 opt = parse_args(OptionParser(option_list=option_list))
 
 
-id = opt$id
+id <- gsub('"', '', opt$id)
 
 
 
