@@ -18,7 +18,7 @@ opt = parse_args(OptionParser(option_list=option_list))
 
 
 count = opt$count
-id = opt$id
+id <- gsub('"', '', opt$id)
 
 
 
