@@ -5,7 +5,6 @@ setwd('/app')
 library(optparse)
 library(jsonlite)
 
-option_list = list
 
 option_list = list(
 
@@ -17,7 +16,7 @@ make_option(c("--id"), action="store", default=NA, type="character", help="my de
 opt = parse_args(OptionParser(option_list=option_list))
 
 
-id = opt$id.replace('"','')
+id = opt$id
 
 
 
