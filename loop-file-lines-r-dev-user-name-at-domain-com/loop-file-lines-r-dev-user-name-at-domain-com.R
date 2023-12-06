@@ -17,7 +17,7 @@ make_option(c("--lines"), action="store", default=NA, type="character", help="my
 opt = parse_args(OptionParser(option_list=option_list))
 
 
-id = opt$id
+id <- gsub('"', '', opt$id)
 lines = fromJSON(opt$lines)
 
 
