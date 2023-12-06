@@ -17,7 +17,7 @@ make_option(c("--list_of_ints"), action="store", default=NA, type="character", h
 opt = parse_args(OptionParser(option_list=option_list))
 
 
-id = opt$id
+id <- gsub('"', '', opt$id)
 list_of_ints = fromJSON(opt$list_of_ints)
 
 
