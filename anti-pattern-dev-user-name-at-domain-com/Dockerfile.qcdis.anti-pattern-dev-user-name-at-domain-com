@@ -1,5 +1,5 @@
 
-FROM qcdis/miniconda3:v0.1 AS build
+FROM qcdis/miniconda3 AS build
 COPY anti-pattern-dev-user-name-at-domain-com-environment.yaml .
 RUN conda env update -n venv -f anti-pattern-dev-user-name-at-domain-com-environment.yaml
 RUN conda-pack -n venv -o /tmp/env.tar && \
