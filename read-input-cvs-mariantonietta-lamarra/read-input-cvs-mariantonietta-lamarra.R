@@ -111,7 +111,7 @@ for (file in outputs) {
     print(response)
 }
 
-output2="test"
+output_2="test"
 
 
 
@@ -119,6 +119,6 @@ output2="test"
 file <- file(paste0('/tmp/output_dfmerged_1_', id, '.json'))
 writeLines(toJSON(output_dfmerged_1, auto_unbox=TRUE), file)
 close(file)
-file <- file(paste0('/tmp/output2_', id, '.json'))
-writeLines(toJSON(output2, auto_unbox=TRUE), file)
+file <- file(paste0('/tmp/output_2_', id, '.json'))
+writeLines(toJSON(output_2, auto_unbox=TRUE), file)
 close(file)
