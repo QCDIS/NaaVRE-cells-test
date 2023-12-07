@@ -9,7 +9,7 @@ option_list = list
 
 option_list = list(
 make_option(c("--id"), action="store", default=NA, type='character', help="my description"),
-make_option(c("--output2"), action="store", default=NA, type='character', help="my description"),
+make_option(c("--output_2"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--output_dfmerged_1"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--param_CalcType"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--param_hostname"), action="store", default=NA, type='character', help="my description"),
@@ -22,7 +22,7 @@ opt = parse_args(OptionParser(option_list=option_list))
 
 
 id = opt$id
-output2 = opt$output2
+output_2 = opt$output_2
 output_dfmerged_1 = opt$output_dfmerged_1
 
 param_CalcType = opt$param_CalcType
@@ -55,7 +55,7 @@ for (directory in conf_local) {
 }
 
 print(output_dfmerged_1)
-print(output2)
+print(output_2)
 
 auth = basicTextGatherer()
 cred = paste(param_login, param_password, sep = ":")
