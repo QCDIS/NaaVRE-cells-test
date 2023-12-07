@@ -26,16 +26,16 @@ param_password = opt$param_password
 
 
 conf_local <- c('traits','traits/input','traits/output')
-conf_output = 'traits/output'
 conf_datain1 = 'Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv'
 conf_datain2 = '2_FILEinformativo_OPERATORE.csv'
+conf_output = 'traits/output'
 conf_density = 1
 
 
 conf_local <- c('traits','traits/input','traits/output')
-conf_output = 'traits/output'
 conf_datain1 = 'Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv'
 conf_datain2 = '2_FILEinformativo_OPERATORE.csv'
+conf_output = 'traits/output'
 conf_density = 1
 
 install.packages("RCurl",repos = "http://cran.us.r-project.org")
@@ -111,11 +111,14 @@ for (file in outputs) {
     print(response)
 }
 
-output_dfmerged_1 = paste0(conf_output,'/dfmerged.csv')
+output2="test"
 
 
 
 # capturing outputs
 file <- file(paste0('/tmp/output_dfmerged_1_', id, '.json'))
 writeLines(toJSON(output_dfmerged_1, auto_unbox=TRUE), file)
+close(file)
+file <- file(paste0('/tmp/output2_', id, '.json'))
+writeLines(toJSON(output2, auto_unbox=TRUE), file)
 close(file)
