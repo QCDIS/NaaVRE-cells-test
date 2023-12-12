@@ -46,5 +46,11 @@ print(download_file)
 file_content <- getURL(download_file, curl = getCurlHandle(userpwd = cred))
 write(file_content, file = dest)
 
+output = ""
 
 
+
+# capturing outputs
+file <- file(paste0('/tmp/output_', id, '.json'))
+writeLines(toJSON(output, auto_unbox=TRUE), file)
+close(file)
