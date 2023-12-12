@@ -8,20 +8,20 @@ library(jsonlite)
 option_list = list
 
 option_list = list(
+make_option(c("--dest"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--dest_1"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--dest_2"), action="store", default=NA, type='character', help="my description"),
-make_option(c("--id"), action="store", default=NA, type='character', help="my description"),
-make_option(c("--output"), action="store", default=NA, type='character', help="my description")
+make_option(c("--id"), action="store", default=NA, type='character', help="my description")
 )
 
 # set input parameters accordingly
 opt = parse_args(OptionParser(option_list=option_list))
 
 
+dest = opt$dest
 dest_1 = opt$dest_1
 dest_2 = opt$dest_2
 id = opt$id
-output = opt$output
 
 
 
@@ -32,7 +32,7 @@ conf_density = 1
 conf_output = '/tmp/data/'
 conf_density = 1
 
-print(output)
+print(dest)
 
 countingStrategy = ''
 if (conf_density==1) {countingStrategy <- 'density0'}
