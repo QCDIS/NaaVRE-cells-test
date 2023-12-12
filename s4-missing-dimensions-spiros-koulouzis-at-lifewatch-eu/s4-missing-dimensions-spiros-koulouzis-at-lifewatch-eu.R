@@ -28,8 +28,7 @@ conf_output = '/tmp/data/'
 
 conf_output = '/tmp/data/'
 
-
-df.merged=read.csv(output_dfmerged_1,stringsAsFactors=FALSE,sep = ";", dec = ".")
+df.merged = read.csv(output_dfmerged_1,stringsAsFactors=FALSE,sep = ";", dec = ".")
 
 formulaformissingdimension = '' 
 formulaformissingdimensionsimplified = '' 
@@ -75,9 +74,6 @@ write.table(df.merged,output_dfmerged_2,row.names=FALSE,sep = ";",dec = ".",quot
 
 
 # capturing outputs
-file <- file(paste0('/tmp/df.merged_', id, '.json'))
-writeLines(toJSON(df.merged, auto_unbox=TRUE), file)
-close(file)
 file <- file(paste0('/tmp/output_dfmerged_2_', id, '.json'))
 writeLines(toJSON(output_dfmerged_2, auto_unbox=TRUE), file)
 close(file)
