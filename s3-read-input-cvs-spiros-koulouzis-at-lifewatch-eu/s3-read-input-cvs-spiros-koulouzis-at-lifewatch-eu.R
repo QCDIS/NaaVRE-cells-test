@@ -63,7 +63,7 @@ if (conf_density==1) {countingStrategy <- 'density0'}
 
 index = 0
 
-df.datain=read.csv(dest_1,stringsAsFactors=FALSE,sep = ";", dec = ".")
+df.datain = read.csv(dest_1,stringsAsFactors=FALSE,sep = ";", dec = ".")
 head(df.datain, n = 3)
 df.datain[,'measurementremarks'] = tolower(df.datain[,'measurementremarks']) # eliminate capital letters
 df.datain[,'index'] = c(1:nrow(df.datain)) # needed to restore rows order later
@@ -84,7 +84,6 @@ if(!'numberoftransects'%in%names(df.merged))df.merged[,'numberoftransects']=df.m
 if(!'settlingvolume'%in%names(df.merged))df.merged[,'settlingvolume']=NA
 if(!'dilutionfactor'%in%names(df.merged))df.merged[,'dilutionfactor']=1
 
-
 output_dfmerged_1 = paste(conf_output, "dfmerged_1.csv",sep = "")
 write.table(df.merged,output_dfmerged_1,row.names=FALSE,sep = ";",dec = ".",quote=FALSE)
 
@@ -93,9 +92,6 @@ write.table(df.merged,output_dfmerged_1,row.names=FALSE,sep = ";",dec = ".",quot
 # capturing outputs
 file <- file(paste0('/tmp/file_name_', id, '.json'))
 writeLines(toJSON(file_name, auto_unbox=TRUE), file)
-close(file)
-file <- file(paste0('/tmp/df.merged_', id, '.json'))
-writeLines(toJSON(df.merged, auto_unbox=TRUE), file)
 close(file)
 file <- file(paste0('/tmp/output_dfmerged_1_', id, '.json'))
 writeLines(toJSON(output_dfmerged_1, auto_unbox=TRUE), file)
