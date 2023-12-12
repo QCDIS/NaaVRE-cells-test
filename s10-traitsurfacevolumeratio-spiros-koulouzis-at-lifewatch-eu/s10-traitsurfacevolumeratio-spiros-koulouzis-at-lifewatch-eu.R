@@ -35,6 +35,7 @@ conf_output = '/tmp/data/'
 
 biovolume = ''
 surfacearea = ''
+SVR_calc = 0.0
 
 df.merged=read.csv(output_dfmerged_7,stringsAsFactors=FALSE,sep = ";", dec = ".")
 
