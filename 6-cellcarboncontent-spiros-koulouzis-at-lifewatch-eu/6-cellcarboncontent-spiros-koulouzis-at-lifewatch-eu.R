@@ -77,3 +77,7 @@ write.table(df.merged,output_dfmerged_4,row.names=FALSE,sep = ";",dec = ".",quot
 
 
 
+# capturing outputs
+file <- file(paste0('/tmp/output_dfmerged_4_', id, '.json'))
+writeLines(toJSON(output_dfmerged_4, auto_unbox=TRUE), file)
+close(file)
