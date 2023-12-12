@@ -31,7 +31,7 @@ conf_output = '/tmp/data/'
 df.merged = read.csv(output_dfmerged_1,stringsAsFactors=FALSE,sep = ";", dec = ".")
 
 formulaformissingdimension = '' 
-formulaformissingdimensionsimplified = '' 
+formulaformissingdimensionsimplified = ''
 df.temp = ''  
 md.form = ''
 df.temp2 = ''
