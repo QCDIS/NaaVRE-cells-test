@@ -36,6 +36,7 @@ df.merged=read.csv(output_dfmerged_8,stringsAsFactors=FALSE,sep = ";", dec = "."
 
 cellcarboncontent = ''
 density = ''
+TCC_calc = 0.0
 
 if(conf_totalcarboncontent==1){
   if((conf_density==0) & (!'density'%in%names(df.merged))) df.merged$density<-NA
