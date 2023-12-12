@@ -5,32 +5,33 @@ setwd('/app')
 library(optparse)
 library(jsonlite)
 
-option_list = list
 
 option_list = list(
-make_option(c("--id"), action="store", default=NA, type='character', help="my description"),
-make_option(c("--param_hostname"), action="store", default=NA, type='character', help="my description"),
-make_option(c("--param_login"), action="store", default=NA, type='character', help="my description"),
-make_option(c("--param_password"), action="store", default=NA, type='character', help="my description")
+
+make_option(c("--id"), action="store", default=NA, type="character", help="my description"), 
+make_option(c("--param_hostname"), action="store", default=NA, type="character", help="my description"), 
+make_option(c("--param_login"), action="store", default=NA, type="character", help="my description"), 
+make_option(c("--param_password"), action="store", default=NA, type="character", help="my description")
+
 )
 
 # set input parameters accordingly
 opt = parse_args(OptionParser(option_list=option_list))
 
 
-id = opt$id
+id <- gsub('"', '', opt$id)
 
 param_hostname = opt$param_hostname
 param_login = opt$param_login
 param_password = opt$param_password
 
 
-conf_output = '/tmp/data/'
 conf_density = 1
+conf_output = '/tmp/data/'
 
 
-conf_output = '/tmp/data/'
 conf_density = 1
+conf_output = '/tmp/data/'
 
 install.packages("RCurl",repos = "http://cran.us.r-project.org")
 RCurl = ''
