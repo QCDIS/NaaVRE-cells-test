@@ -8,21 +8,21 @@ library(jsonlite)
 option_list = list
 
 option_list = list(
-make_option(c("--dest"), action="store", default=NA, type='character', help="my description"),
-make_option(c("--dest_1"), action="store", default=NA, type='character', help="my description"),
-make_option(c("--dest_2"), action="store", default=NA, type='character', help="my description"),
-make_option(c("--id"), action="store", default=NA, type='character', help="my description")
+make_option(c("--id"), action="store", default=NA, type='character', help="my description"),
+make_option(c("--param_hostname"), action="store", default=NA, type='character', help="my description"),
+make_option(c("--param_login"), action="store", default=NA, type='character', help="my description"),
+make_option(c("--param_password"), action="store", default=NA, type='character', help="my description")
 )
 
 # set input parameters accordingly
 opt = parse_args(OptionParser(option_list=option_list))
 
 
-dest = opt$dest
-dest_1 = opt$dest_1
-dest_2 = opt$dest_2
 id = opt$id
 
+param_hostname = opt$param_hostname
+param_login = opt$param_login
+param_password = opt$param_password
 
 
 conf_output = '/tmp/data/'
@@ -32,7 +32,31 @@ conf_density = 1
 conf_output = '/tmp/data/'
 conf_density = 1
 
-print(dest)
+install.packages("RCurl",repos = "http://cran.us.r-project.org")
+RCurl = ''
+library(RCurl)
+install.packages("httr",repos = "http://cran.us.r-project.org")
+httr = ''
+library(httr)
+
+auth = basicTextGatherer()
+cred = paste(param_login, param_password, sep = ":")
+
+file_name = "Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv"
+dest_1 = paste(conf_output, file_name,sep = "")
+download_file = paste0(param_hostname,file_name)
+print(download_file)
+file_content <- getURL(download_file, curl = getCurlHandle(userpwd = cred))
+write(file_content, file = dest_1)
+
+
+file_name = "2_FILEinformativo_OPERATORE.csv"
+dest_2 = paste(conf_output, file_name,sep = "")
+download_file = paste0(param_hostname,file_name)
+print(download_file)
+file_content <- getURL(download_file, curl = getCurlHandle(userpwd = cred))
+write(file_content, file = dest_2)
+
 
 countingStrategy = ''
 if (conf_density==1) {countingStrategy <- 'density0'}
@@ -67,6 +91,9 @@ write.table(df.merged,output_dfmerged_1,row.names=FALSE,sep = ";",dec = ".",quot
 
 
 # capturing outputs
+file <- file(paste0('/tmp/file_name_', id, '.json'))
+writeLines(toJSON(file_name, auto_unbox=TRUE), file)
+close(file)
 file <- file(paste0('/tmp/df.merged_', id, '.json'))
 writeLines(toJSON(df.merged, auto_unbox=TRUE), file)
 close(file)
