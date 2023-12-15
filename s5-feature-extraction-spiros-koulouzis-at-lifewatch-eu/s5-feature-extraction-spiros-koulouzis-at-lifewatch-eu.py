@@ -35,12 +35,12 @@ conf_min_y = '214783.87'
 conf_max_y = '726783.87'
 conf_n_tiles_side = '512'
 conf_local_tmp = pathlib.Path('/tmp')
-conf_remote_path_retiled = pathlib.Path( '/webdav/vl-laserfarm/ahn' + '/retiled_'+param_username)
+conf_remote_path_retiled = pathlib.Path('/webdav/vl-laserfarm/' + param_username + '/retiled')
 conf_attribute = 'raw_classification'
 conf_filter_type= 'select_equal'
 conf_apply_filter_value = '1'
 conf_validate_precision = '0.001'
-conf_remote_path_targets = pathlib.Path( '/webdav/vl-laserfarm/ahn' + '/targets_'+param_username)
+conf_remote_path_targets = pathlib.Path('/webdav/vl-laserfarm/' + param_username +  '/targets')
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 
 conf_feature_name = 'perc_95_normalized_height'
@@ -51,12 +51,12 @@ conf_min_y = '214783.87'
 conf_max_y = '726783.87'
 conf_n_tiles_side = '512'
 conf_local_tmp = pathlib.Path('/tmp')
-conf_remote_path_retiled = pathlib.Path( '/webdav/vl-laserfarm/ahn' + '/retiled_'+param_username)
+conf_remote_path_retiled = pathlib.Path('/webdav/vl-laserfarm/' + param_username + '/retiled')
 conf_attribute = 'raw_classification'
 conf_filter_type= 'select_equal'
 conf_apply_filter_value = '1'
 conf_validate_precision = '0.001'
-conf_remote_path_targets = pathlib.Path( '/webdav/vl-laserfarm/ahn' + '/targets_'+param_username)
+conf_remote_path_targets = pathlib.Path('/webdav/vl-laserfarm/' + param_username +  '/targets')
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
     
 for t in tiles:
