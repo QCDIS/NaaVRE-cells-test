@@ -35,13 +35,11 @@ param_username = args.param_username
 conf_laz_compression_factor = '7'
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 conf_remote_path_split = pathlib.Path('/webdav/vl-laserfarm/' + param_username + '/split')
-conf_remote_path_ahn = param_remote_path_root
 conf_max_filesize = '262144000'  # desired max file size (in bytes)
 
 conf_laz_compression_factor = '7'
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 conf_remote_path_split = pathlib.Path('/webdav/vl-laserfarm/' + param_username + '/split')
-conf_remote_path_ahn = param_remote_path_root
 conf_max_filesize = '262144000'  # desired max file size (in bytes)
 
 
@@ -89,7 +87,7 @@ remote_path_split = conf_remote_path_split
 
 for file in laz_files:
     print('Splitting: '+file )
-    client.download_sync(remote_path=os.path.join(conf_remote_path_ahn,file), local_path=file)
+    client.download_sync(remote_path=os.path.join(param_remote_path_root,file), local_path=file)
     inps = split_strategy(file, int(conf_max_filesize))
     for inp in inps:
         save_chunk_to_laz_file(*inp)
