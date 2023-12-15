@@ -76,7 +76,3 @@ filename = "/tmp/remote_path_retiled_" + id + ".json"
 file_remote_path_retiled = open(filename, "w")
 file_remote_path_retiled.write(json.dumps(remote_path_retiled))
 file_remote_path_retiled.close()
-filename = "/tmp/retiler_output_" + id + ".json"
-file_retiler_output = open(filename, "w")
-file_retiler_output.write(json.dumps(retiler_output))
-file_retiler_output.close()
