@@ -15,6 +15,7 @@ arg_parser.add_argument('--laz_files', action='store', type=str, required=True, 
 arg_parser.add_argument('--param_hostname', action='store', type=str, required='True', dest='param_hostname')
 arg_parser.add_argument('--param_login', action='store', type=str, required='True', dest='param_login')
 arg_parser.add_argument('--param_password', action='store', type=str, required='True', dest='param_password')
+arg_parser.add_argument('--param_remote_path_root', action='store', type=str, required='True', dest='param_remote_path_root')
 arg_parser.add_argument('--param_username', action='store', type=str, required='True', dest='param_username')
 
 args = arg_parser.parse_args()
@@ -28,18 +29,19 @@ laz_files = json.loads(args.laz_files)
 param_hostname = args.param_hostname
 param_login = args.param_login
 param_password = args.param_password
+param_remote_path_root = args.param_remote_path_root
 param_username = args.param_username
 
 conf_laz_compression_factor = '7'
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
-conf_remote_path_split = pathlib.Path( '/webdav/vl-laserfarm/ahn' + '/split_'+param_username)
-conf_remote_path_ahn =  '/webdav/vl-laserfarm/ahn'
+conf_remote_path_split = pathlib.Path('/webdav/vl-laserfarm/' + param_username + '/split')
+conf_remote_path_ahn = param_remote_path_root
 conf_max_filesize = '262144000'  # desired max file size (in bytes)
 
 conf_laz_compression_factor = '7'
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
-conf_remote_path_split = pathlib.Path( '/webdav/vl-laserfarm/ahn' + '/split_'+param_username)
-conf_remote_path_ahn =  '/webdav/vl-laserfarm/ahn'
+conf_remote_path_split = pathlib.Path('/webdav/vl-laserfarm/' + param_username + '/split')
+conf_remote_path_ahn = param_remote_path_root
 conf_max_filesize = '262144000'  # desired max file size (in bytes)
 
 
