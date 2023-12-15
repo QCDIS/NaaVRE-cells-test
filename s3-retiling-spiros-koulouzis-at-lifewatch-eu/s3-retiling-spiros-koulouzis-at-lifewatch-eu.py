@@ -68,7 +68,8 @@ retiling_input = {
 }
 
 for file in split_laz_files:
-    retiler = Retiler(file.replace('"',''),label=file).config(retiling_input).setup_webdav_client(conf_wd_opts)
+    print(file)
+    retiler = Retiler(file.replace('"','').replace('[','').replace(']',''),label=file).config(retiling_input).setup_webdav_client(conf_wd_opts)
     retiler_output = retiler.run()
 
 import json
