@@ -7,8 +7,6 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--conf_remote_path_geotiffs', action='store', type=str, required='True', dest='conf_remote_path_geotiffs')
-
 arg_parser.add_argument('--remote_path_targets', action='store', type=str, required='True', dest='remote_path_targets')
 
 arg_parser.add_argument('--param_hostname', action='store', type=str, required='True', dest='param_hostname')
@@ -21,7 +19,6 @@ print(args)
 
 id = args.id
 
-conf_remote_path_geotiffs = args.conf_remote_path_geotiffs
 remote_path_targets = args.remote_path_targets
 
 param_hostname = args.param_hostname
@@ -30,12 +27,14 @@ param_password = args.param_password
 param_username = args.param_username
 
 conf_local_tmp = pathlib.Path('/tmp')
-conf_remote_path_targets = pathlib.Path( '/webdav/vl-laserfarm/ahn' + '/targets_'+param_username)
+conf_remote_path_targets = pathlib.Path('/webdav/vl-laserfarm/' + param_username +  '/targets')
+conf_remote_path_geotiffs = pathlib.Path('/webdav/vl-laserfarm/' + param_username + '/geotiffs')
 conf_feature_name = 'perc_95_normalized_height'
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 
 conf_local_tmp = pathlib.Path('/tmp')
-conf_remote_path_targets = pathlib.Path( '/webdav/vl-laserfarm/ahn' + '/targets_'+param_username)
+conf_remote_path_targets = pathlib.Path('/webdav/vl-laserfarm/' + param_username +  '/targets')
+conf_remote_path_geotiffs = pathlib.Path('/webdav/vl-laserfarm/' + param_username + '/geotiffs')
 conf_feature_name = 'perc_95_normalized_height'
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 
