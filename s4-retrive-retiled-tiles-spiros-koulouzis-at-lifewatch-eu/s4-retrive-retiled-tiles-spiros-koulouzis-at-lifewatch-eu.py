@@ -29,10 +29,10 @@ param_password = args.param_password
 param_username = args.param_username
 
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
-conf_remote_path_retiled = pathlib.Path( '/webdav/vl-laserfarm/ahn' + '/retiled_'+param_username)
+conf_remote_path_retiled = pathlib.Path('/webdav/vl-laserfarm/' + param_username + '/retiled')
 
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
-conf_remote_path_retiled = pathlib.Path( '/webdav/vl-laserfarm/ahn' + '/retiled_'+param_username)
+conf_remote_path_retiled = pathlib.Path('/webdav/vl-laserfarm/' + param_username + '/retiled')
 remote_path_retiled
 
 tiles = [t.strip('/') for t in list_remote(get_wdclient(conf_wd_opts), conf_remote_path_retiled.as_posix())
