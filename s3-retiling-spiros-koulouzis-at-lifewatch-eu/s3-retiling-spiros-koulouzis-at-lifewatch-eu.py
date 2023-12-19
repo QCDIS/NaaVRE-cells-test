@@ -31,7 +31,7 @@ conf_max_x = '398892.19'
 conf_min_y = '214783.87'
 conf_max_y = '726783.87'
 conf_n_tiles_side = '512'
-conf_local_tmp = pathlib.Path('/tmp')
+conf_local_tmp = pathlib.Path('/tmp/data')
 conf_remote_path_split = pathlib.Path('/webdav/vl-laserfarm/' +  'spiros.koulouzis@lifewatch.eu' + '/split')
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 
@@ -41,7 +41,7 @@ conf_max_x = '398892.19'
 conf_min_y = '214783.87'
 conf_max_y = '726783.87'
 conf_n_tiles_side = '512'
-conf_local_tmp = pathlib.Path('/tmp')
+conf_local_tmp = pathlib.Path('/tmp/data')
 conf_remote_path_split = pathlib.Path('/webdav/vl-laserfarm/' +  'spiros.koulouzis@lifewatch.eu' + '/split')
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 split_laz_files
