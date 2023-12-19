@@ -24,13 +24,13 @@ param_hostname = args.param_hostname
 param_login = args.param_login
 param_password = args.param_password
 
-conf_local_tmp = pathlib.Path('/tmp')
+conf_local_tmp = pathlib.Path('/tmp/data')
 conf_remote_path_targets = pathlib.Path('/webdav/vl-laserfarm/' +  'spiros.koulouzis@lifewatch.eu' +  '/targets')
 conf_remote_path_geotiffs = pathlib.Path('/webdav/vl-laserfarm/' +  'spiros.koulouzis@lifewatch.eu' + '/geotiffs')
 conf_feature_name = 'perc_95_normalized_height'
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
 
-conf_local_tmp = pathlib.Path('/tmp')
+conf_local_tmp = pathlib.Path('/tmp/data')
 conf_remote_path_targets = pathlib.Path('/webdav/vl-laserfarm/' +  'spiros.koulouzis@lifewatch.eu' +  '/targets')
 conf_remote_path_geotiffs = pathlib.Path('/webdav/vl-laserfarm/' +  'spiros.koulouzis@lifewatch.eu' + '/geotiffs')
 conf_feature_name = 'perc_95_normalized_height'
