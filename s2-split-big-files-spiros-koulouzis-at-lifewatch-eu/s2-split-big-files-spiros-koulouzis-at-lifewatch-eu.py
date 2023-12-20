@@ -78,10 +78,9 @@ def split_strategy(filename, max_filesize):
 client = Client(conf_wd_opts)
 client.mkdir(conf_remote_path_split.as_posix())
 
-
+remote_path_split = ''
 remote_path_split = conf_remote_path_split
 
-split_laz_files = []
 
 for file in laz_files:
     print('Splitting: '+file )
@@ -93,11 +92,11 @@ for file in laz_files:
         out_filename = save_chunk_to_laz_file(*inp)
         print('out_filename: '+out_filename)
         client.upload_sync(remote_path=os.path.join(conf_remote_path_split,out_filename), local_path=out_filename)
-        split_laz_files.append(out_filename)
+        # split_laz_files.append(out_filename)
     
 
 import json
-filename = "/tmp/split_laz_files_" + id + ".json"
-file_split_laz_files = open(filename, "w")
-file_split_laz_files.write(json.dumps(split_laz_files))
-file_split_laz_files.close()
+filename = "/tmp/remote_path_split_" + id + ".json"
+file_remote_path_split = open(filename, "w")
+file_remote_path_split.write(json.dumps(remote_path_split))
+file_remote_path_split.close()
