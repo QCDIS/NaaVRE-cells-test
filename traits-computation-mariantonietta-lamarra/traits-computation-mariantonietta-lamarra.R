@@ -8,7 +8,10 @@ library(jsonlite)
 
 option_list = list(
 
-make_option(c("--id"), action="store", default=NA, type="character", help="my description")
+make_option(c("--id"), action="store", default=NA, type="character", help="my description"), 
+make_option(c("--param_hostname"), action="store", default=NA, type="character", help="my description"), 
+make_option(c("--param_login"), action="store", default=NA, type="character", help="my description"), 
+make_option(c("--param_password"), action="store", default=NA, type="character", help="my description")
 
 )
 
@@ -18,6 +21,9 @@ opt = parse_args(OptionParser(option_list=option_list))
 
 id <- gsub('"', '', opt$id)
 
+param_hostname = opt$param_hostname
+param_login = opt$param_login
+param_password = opt$param_password
 
 
 
@@ -26,9 +32,6 @@ id <- gsub('"', '', opt$id)
 
 
 
-param_hostname = 'https://lifewatch.lab.uvalight.net/webdav/vl-phytoplankton/mariantonietta/'
-param_login = 'mariantonietta'
-param_password = 'ZTVkNzIzYmI3YjJkNjdlMTY5'
 
 conf_datain1 = "Phytoplankton__Progetto_Strategico_2009_2012_Australia.csv"
 conf_datain2 = '2_FILEinformativo_OPERATORE.csv'
