@@ -9,6 +9,9 @@ library(jsonlite)
 option_list = list(
 
 make_option(c("--id"), action="store", default=NA, type="character", help="my description"), 
+make_option(c("--param_CalcType"), action="store", default=NA, type="character", help="my description"), 
+make_option(c("--param_CompTraits"), action="store", default=NA, type="character", help="my description"), 
+make_option(c("--param_CountingStrategy"), action="store", default=NA, type="character", help="my description"), 
 make_option(c("--param_hostname"), action="store", default=NA, type="character", help="my description"), 
 make_option(c("--param_login"), action="store", default=NA, type="character", help="my description"), 
 make_option(c("--param_password"), action="store", default=NA, type="character", help="my description")
@@ -21,6 +24,9 @@ opt = parse_args(OptionParser(option_list=option_list))
 
 id <- gsub('"', '', opt$id)
 
+param_CalcType = opt$param_CalcType
+param_CompTraits = opt$param_CompTraits
+param_CountingStrategy = opt$param_CountingStrategy
 param_hostname = opt$param_hostname
 param_login = opt$param_login
 param_password = opt$param_password
@@ -38,16 +44,7 @@ conf_datain2 = '2_FILEinformativo_OPERATORE.csv'
 
 conf_output = '/tmp/data/'
 
-conf_CalcType = 'advanced'
-
-conf_biovolume = 1 # if 1 it is calculated, if 0 it is not calculated
-conf_totalbiovolume = 1
-conf_density = 1
-conf_countingStrategy ='density0'
-conf_surfacearea = 1
-conf_surfacevolumeratio = 1
-conf_cellcarboncontent = 1
-conf_totalcarboncontent = 1
+CompTraits <- as.list(scan(text = param_CompTraits, what = "", sep = ","))
 
 formulaforsurfacesimplified = ''
 formulaforbiovolumesimplified = ''
@@ -104,7 +101,7 @@ if(!'settlingvolume'%in%names(df.merged))df.merged[,'settlingvolume']=NA
 if(!'dilutionfactor'%in%names(df.merged))df.merged[,'dilutionfactor']=1
 
 
-if(conf_CalcType=='advanced'){
+if(param_CalcType=='advanced'){
   df.merged.concat = df.merged[is.na(df.merged[,'formulaformissingdimension']),]
   md.formulas = unique(df.merged[!is.na(df.merged[,'formulaformissingdimension']),'formulaformissingdimension'])
   for(md.form in md.formulas){
@@ -117,7 +114,7 @@ if(conf_CalcType=='advanced'){
   }
   df.merged.concat = df.merged.concat[order(df.merged.concat[,'index']),]
   df.merged = df.merged.concat
-} else if(conf_CalcType=='simplified'){
+} else if(param_CalcType=='simplified'){
   df.merged.concat = df.merged[is.na(df.merged[,'formulaformissingdimensionsimplified']),]
   md.formulas = unique(df.merged[!is.na(df.merged[,'formulaformissingdimensionsimplified']),'formulaformissingdimensionsimplified'])
   for(md.form in md.formulas){
@@ -133,8 +130,8 @@ if(conf_CalcType=='advanced'){
 }
 
 
-if(conf_biovolume==1){
-  if(conf_CalcType=='advanced'){
+if('biovolume'%in%CompTraits){
+  if(param_CalcType=='advanced'){
     df.merged[,'biovolume'] = rep(NA,length=nrow(df.merged))
     df.merged.concat = df.merged[is.na(df.merged[,'formulaforbiovolume']),]
     bv.formulas = unique(df.merged[!is.na(df.merged[,'formulaforbiovolume']),'formulaforbiovolume'])
@@ -146,7 +143,7 @@ if(conf_biovolume==1){
     df.merged.concat = df.merged.concat[order(df.merged.concat[,'index']),]
     df.merged = df.merged.concat
   }
-  else if(conf_CalcType=='simplified'){
+  else if(param_CalcType=='simplified'){
     df.merged[,'biovolume'] = rep(NA,length=nrow(df.merged))
     df.merged.concat = df.merged[is.na(df.merged[,'formulaforbiovolumesimplified']),]
     bv.formulas = unique(df.merged[!is.na(df.merged[,'formulaforbiovolumesimplified']),'formulaforbiovolumesimplified'])
@@ -161,8 +158,8 @@ if(conf_biovolume==1){
 } 
 
 
-if(conf_surfacearea==1){
-  if(conf_CalcType=='advanced'){
+if('surfacearea'%in%CompTraits){
+  if(param_CalcType=='advanced'){
     df.merged[,'surfacearea'] = rep(NA,length=nrow(df.merged))
     df.merged.concat = df.merged[is.na(df.merged[,'formulaforsurface']),]
     sa.formulas = unique(df.merged[!is.na(df.merged[,'formulaforsurface']),'formulaforsurface'])
@@ -174,7 +171,7 @@ if(conf_surfacearea==1){
     df.merged.concat = df.merged.concat[order(df.merged.concat[,'index']),]
     df.merged = df.merged.concat
   }
-  else if(conf_CalcType=='simplified'){
+  else if(param_CalcType=='simplified'){
     df.merged[,'surfacearea'] = rep(NA,length=nrow(df.merged))
     df.merged.concat = df.merged[is.na(df.merged[,'formulaforsurfacesimplified']),]
     sa.formulas = unique(df.merged[!is.na(df.merged[,'formulaforsurfacesimplified']),'formulaforsurfacesimplified'])
@@ -189,9 +186,9 @@ if(conf_surfacearea==1){
 }
     
     
-if(conf_cellcarboncontent==1){
+if('cellcarboncontent'%in%CompTraits){
   df.merged[,'cellcarboncontent'] = rep(NA,length=nrow(df.merged))
-  if(conf_biovolume==1){
+  if('biovolume'%in%CompTraits){
     df.merged.concat = df.merged[is.na(df.merged[,'biovolume']),]
     df.cc = df.merged[!is.na(df.merged[,'biovolume']),]
     df.cc1 = subset(df.cc,biovolume <= 3000)
@@ -215,10 +212,10 @@ if(conf_cellcarboncontent==1){
 
     
     
-if(conf_density==1){
+if('density'%in%CompTraits){
   df.merged[,'density'] = rep(NA,length=nrow(df.merged))
   # default method to calculate the density
-  if(conf_countingStrategy=='density0'){  
+  if(param_CountingStrategy=='density0'){  
     df.merged.concat = df.merged[(is.na(df.merged[,'volumeofsedimentationchamber'])) & (is.na(df.merged[,'transectcounting'])),]
     df.temp = df.merged[!is.na(df.merged[,'volumeofsedimentationchamber']) & !is.na(df.merged[,'transectcounting']),]
     df.temp1 = subset(df.temp,volumeofsedimentationchamber <= 5)
@@ -241,67 +238,67 @@ if(conf_density==1){
     df.merged[,'density'] = round(df.merged[,'density'],2)
   }
   # counts per random field
-  else if(conf_countingStrategy=='density1'){
+  else if(param_CountingStrategy=='density1'){
     df.merged[,'areaofsedimentationchamber'] = ((df.merged[,'diameterofsedimentationchamber']/2)^2)*pi
     df.merged[,'areaofcountingfield'] = ((df.merged[,'diameteroffieldofview']/2)^2)*pi
     df.merged[,'density'] = round(df.merged[,'organismquantity']*1000*df.merged[,'areaofsedimentationchamber']/df.merged[,'numberofcountedfields']*df.merged[,'areaofcountingfield']*df.merged[,'settlingvolume'],2)
   }
   # counts per diameter transects
-  else if(conf_countingStrategy=='density2'){
+  else if(param_CountingStrategy=='density2'){
     df.merged[,'density'] = round(((df.merged[,'organismquantity']/df.merged[,'numberoftransects'])*(pi/4)*(df.merged[,'diameterofsedimentationchamber']/df.merged[,'diameteroffieldofview']))*1000/df.merged[,'settlingvolume'],2)
   }
   # counting method for whole chamber
-  else if(conf_countingStrategy=='density3'){
+  else if(param_CountingStrategy=='density3'){
     df.merged[,'density'] = round((df.merged[,'organismquantity']*1000)/df.merged[,'settlingvolume'],2)
   }
   df.merged[,'density'] = df.merged[,'density']/df.merged[,'dilutionfactor']
 }   
   
     
-if(conf_totalbiovolume==1){
-  if((conf_density==0) & (!'density'%in%names(df.merged))) df.merged[,'density']=NA
-  if((conf_biovolume==0) & (!'biovolume'%in%names(df.merged))) df.merged[,'biovolume']=NA
+if('totalbiovolume'%in%CompTraits){
+  if((!'density'%in%CompTraits) & (!'density'%in%names(df.merged))) df.merged[,'density']=NA
+  if((!'biovolume'%in%CompTraits) & (!'biovolume'%in%names(df.merged))) df.merged[,'biovolume']=NA
   df.merged[,'totalbiovolume'] = round(df.merged[,'density']*df.merged[,'biovolume'],2)
 }
     
     
-if(conf_surfacevolumeratio==1){
-  if((conf_surfacearea==0) & (!'surfacearea'%in%names(df.merged))) df.merged[,'surfacearea']=NA
-  if((conf_biovolume==0) & (!'biovolume'%in%names(df.merged))) df.merged[,'biovolume']=NA
+if('surfacevolumeratio'%in%CompTraits){
+  if(('surfacearea'%in%CompTraits) & (!'surfacearea'%in%names(df.merged))) df.merged[,'surfacearea']=NA
+  if(('biovolume'%in%CompTraits) & (!'biovolume'%in%names(df.merged))) df.merged[,'biovolume']=NA
   df.merged[,'surfacevolumeratio']=round(df.merged[,'surfacearea']/df.merged[,'biovolume'],2)
 }
     
     
-if(conf_totalcarboncontent==1){
-  if((conf_density==0) & (!'density'%in%names(df.merged))) df.merged[,'density']=NA
-  if((conf_cellcarboncontent==0) & (!'cellcarboncontent'%in%names(df.merged))) df.merged[,'cellcarboncontent']=NA
+if('totalcarboncontent'%in%CompTraits){
+  if((!'density'%in%CompTraits) & (!'density'%in%names(df.merged))) df.merged[,'density']=NA
+  if((!'cellcarboncontent'%in%CompTraits) & (!'cellcarboncontent'%in%names(df.merged))) df.merged[,'cellcarboncontent']=NA
   df.merged[,'totalcarboncontent']=round(df.merged[,'density']*df.merged[,'cellcarboncontent'],2)
 }    
     
     
 
-if(conf_biovolume==1) {
+if('biovolume'%in%CompTraits) {
     if('biovolume'%in%names(df.datain)) df.datain=subset(df.datain,select=-biovolume) # drop column if already present
     df.datain[,'biovolume'] = df.merged[,'biovolume'] # write column with the results at the end of the dataframe
     }
-if(conf_cellcarboncontent==1) {
+if('cellcarboncontent'%in%CompTraits) {
     if('cellcarboncontent'%in%names(df.datain)) df.datain=subset(df.datain,select=-cellcarboncontent)
     df.datain[,'cellcarboncontent'] = df.merged[,'cellcarboncontent']
     }
-if(conf_density==1) {
+if('density'%in%CompTraits) {
     df.datain[,'density'] = df.merged[,'density']
     }
-if(conf_totalbiovolume==1) {
+if('totalbiovolume'%in%CompTraits) {
     df.datain[,'totalbiovolume'] = df.merged[,'totalbiovolume']
     }
-if(conf_surfacearea==1) {
+if('surfacearea'%in%CompTraits) {
     if('surfacearea'%in%names(df.datain)) df.datain=subset(df.datain,select=-surfacearea)
     df.datain[,'surfacearea'] = df.merged[,'surfacearea']
     }
-if(conf_surfacevolumeratio==1) {
+if('surfacevolumeratio'%in%CompTraits) {
     df.datain[,'surfacevolumeratio'] = df.merged[,'surfacevolumeratio']
     }
-if(conf_totalcarboncontent==1) {
+if('totalcarboncontent'%in%CompTraits) {
     df.datain[,'totalcarboncontent'] = df.merged[,'totalcarboncontent']
     }
     
