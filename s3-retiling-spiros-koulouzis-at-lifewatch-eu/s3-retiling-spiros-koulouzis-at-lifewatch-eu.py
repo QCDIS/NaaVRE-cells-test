@@ -47,6 +47,10 @@ conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login,
 split_laz_files
 remote_path_retiled = str(conf_remote_path_retiled)
 
+print('------------------')
+print(split_laz_files)
+print('------------------')
+
 grid_retile = {
     'min_x': float(conf_min_x),
     'max_x': float(conf_max_x),
@@ -66,8 +70,9 @@ retiling_input = {
 }
 
 for file in split_laz_files:
-    print(file)
-    retiler = Retiler(file.replace('"','').replace('[','').replace(']',''),label=file).config(retiling_input).setup_webdav_client(conf_wd_opts)
+    clean_file = file.replace('"','').replace('[','').replace(']','')
+    print(clean_file)
+    retiler = Retiler(clean_file,label=clean_file).config(retiling_input).setup_webdav_client(conf_wd_opts)
     retiler_output = retiler.run()
 
 import json
