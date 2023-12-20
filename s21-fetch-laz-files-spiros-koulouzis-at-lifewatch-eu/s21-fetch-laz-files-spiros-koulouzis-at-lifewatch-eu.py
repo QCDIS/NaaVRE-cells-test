@@ -26,9 +26,12 @@ param_login = args.param_login
 param_password = args.param_password
 
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
+conf_remote_path_split = pathlib.Path('/webdav/vl-laserfarm/' +  'spiros.koulouzis@lifewatch.eu' + '/split')
 
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_login, 'webdav_password': param_password}
-split_laz_files = [f for f in list_remote(get_wdclient(conf_wd_opts), pathlib.Path(remote_path_split).as_posix())
+conf_remote_path_split = pathlib.Path('/webdav/vl-laserfarm/' +  'spiros.koulouzis@lifewatch.eu' + '/split')
+remote_path_split
+split_laz_files = [f for f in list_remote(get_wdclient(conf_wd_opts), pathlib.Path(str(conf_remote_path_split)).as_posix())
              if f.lower().endswith('.laz')]
 print(split_laz_files)
 
