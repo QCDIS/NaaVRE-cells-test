@@ -46,7 +46,6 @@ def save_chunk_to_laz_file(in_filename,
                            offset, 
                            n_points):
     """Read points from a LAS/LAZ file and write them to a new file."""
-    
     points = np.array([])
     
     with laspy.open(in_filename) as in_file:
@@ -56,7 +55,7 @@ def save_chunk_to_laz_file(in_filename,
             in_file.seek(offset)
             points = in_file.read_points(n_points)
             out_file.write_points(points)
-    return len(points)
+    return out_filename
 
 def split_strategy(filename, max_filesize):
     """Set up splitting strategy for a LAS/LAZ file."""
@@ -82,21 +81,20 @@ client.mkdir(conf_remote_path_split.as_posix())
 
 remote_path_split = conf_remote_path_split
 
+split_laz_files = []
 
 for file in laz_files:
     print('Splitting: '+file )
     client.download_sync(remote_path=os.path.join(param_remote_path_root,file), local_path=file)
     inps = split_strategy(file, int(param_max_filesize)*1048576)
-    for inp in inps:
-        save_chunk_to_laz_file(*inp)
-    client.upload_sync(remote_path=os.path.join(conf_remote_path_split,file), local_path=file)
-
-    for f in os.listdir('.'):
-        if not f.endswith('.LAZ'):
-            continue
-        os.remove(os.path.join('.', f))
     
-split_laz_files = laz_files
+    
+    for inp in inps:
+        out_filename = save_chunk_to_laz_file(*inp)
+        print('out_filename: '+out_filename)
+        client.upload_sync(remote_path=os.path.join(conf_remote_path_split,out_filename), local_path=out_filename)
+        split_laz_files.append(out_filename)
+    
 
 import json
 filename = "/tmp/split_laz_files_" + id + ".json"
