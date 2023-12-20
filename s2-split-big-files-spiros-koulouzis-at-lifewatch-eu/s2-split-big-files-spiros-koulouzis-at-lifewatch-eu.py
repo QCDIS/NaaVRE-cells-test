@@ -78,8 +78,7 @@ def split_strategy(filename, max_filesize):
 client = Client(conf_wd_opts)
 client.mkdir(conf_remote_path_split.as_posix())
 
-remote_path_split = ''
-remote_path_split = conf_remote_path_split
+remote_path_split = str(conf_remote_path_split)
 
 
 for file in laz_files:
