@@ -18,8 +18,6 @@ a = args.a
 
 param_a = args.param_a
 
-conf_a = 1
 
-conf_a = 1
-print(a, conf_a, param_a)
+print(a, param_a)
 
