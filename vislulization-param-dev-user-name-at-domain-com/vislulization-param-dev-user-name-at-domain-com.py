@@ -20,9 +20,9 @@ param_hostname = args.param_hostname
 param_login = args.param_login
 param_password = args.param_password
 
-conf_mode = 'webdav'
-conf_num_files = 1
 conf_remote_path_geotiffs = pathlib.Path('/webdav/vl-laserfarm/' +  'spiros.koulouzis@lifewatch.eu' + '/geotiffs')
+conf_num_files = 1
+conf_mode = 'webdav'
 
 conf_remote_path_geotiffs = pathlib.Path('/webdav/vl-laserfarm/' +  'spiros.koulouzis@lifewatch.eu' + '/geotiffs')
 conf_num_files = 1
