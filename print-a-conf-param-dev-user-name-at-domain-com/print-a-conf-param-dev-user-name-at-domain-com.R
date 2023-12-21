@@ -8,7 +8,6 @@ library(jsonlite)
 
 option_list = list(
 
-make_option(c("--a"), action="store", default=NA, type="character", help="my description"), 
 make_option(c("--id"), action="store", default=NA, type="character", help="my description"), 
 make_option(c("--param_a"), action="store", default=NA, type="character", help="my description")
 
@@ -18,7 +17,6 @@ make_option(c("--param_a"), action="store", default=NA, type="character", help="
 opt = parse_args(OptionParser(option_list=option_list))
 
 
-a <- gsub('"', '', opt$a)
 id <- gsub('"', '', opt$id)
 
 param_a = opt$param_a
@@ -26,7 +24,7 @@ param_a = opt$param_a
 
 
 
-print(a, param_a)
+print(param_a)
 
 
 
