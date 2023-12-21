@@ -19,5 +19,5 @@ a = args.a
 param_a = args.param_a
 
 
-print(a, param_a)
+print(a, param_a, "z")
 
