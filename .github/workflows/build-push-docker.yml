@@ -70,3 +70,4 @@ jobs:
         tags: ${{ github.event.inputs.image_repo }}/${{ github.event.inputs.image_tag }}
         cache-from: type=gha
         cache-to: type=gha,mode=min
+        push: true
