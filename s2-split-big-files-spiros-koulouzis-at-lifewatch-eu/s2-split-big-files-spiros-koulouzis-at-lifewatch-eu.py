@@ -80,18 +80,15 @@ client.mkdir(conf_remote_path_split.as_posix())
 
 remote_path_split = str(conf_remote_path_split)
 
-
 for file in laz_files:
     print('Splitting: '+file )
     client.download_sync(remote_path=os.path.join(param_remote_path_root,file), local_path=file)
     inps = split_strategy(file, int(param_max_filesize)*1048576)
     
-    
     for inp in inps:
         out_filename = save_chunk_to_laz_file(*inp)
         print('out_filename: '+out_filename)
         client.upload_sync(remote_path=os.path.join(conf_remote_path_split,out_filename), local_path=out_filename)
-        # split_laz_files.append(out_filename)
     
 
 import json
