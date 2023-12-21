@@ -7,7 +7,7 @@ arg_parser.add_argument('--id', action='store', type=str, required=True, dest='i
 
 arg_parser.add_argument('--a', action='store', type=int, required=True, dest='a')
 
-arg_parser.add_argument('--param_a', action='store', type=int, required=True, dest='param_a')
+arg_parser.add_argument('--param_a', action='store', type=str, required=True, dest='param_a')
 
 args = arg_parser.parse_args()
 print(args)
@@ -19,5 +19,5 @@ a = args.a
 param_a = args.param_a
 
 
-print(a, param_a, "y")
+print(a, param_a)
 
