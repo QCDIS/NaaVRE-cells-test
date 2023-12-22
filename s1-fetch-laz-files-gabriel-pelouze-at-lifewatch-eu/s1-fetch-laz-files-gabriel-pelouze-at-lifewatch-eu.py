@@ -8,10 +8,10 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--param_hostname', action='store', type=str, required='True', dest='param_hostname')
-arg_parser.add_argument('--param_login', action='store', type=str, required='True', dest='param_login')
-arg_parser.add_argument('--param_password', action='store', type=str, required='True', dest='param_password')
-arg_parser.add_argument('--param_remote_path_root', action='store', type=str, required='True', dest='param_remote_path_root')
+arg_parser.add_argument('--param_hostname', action='store', type=str, required=True, dest='param_hostname')
+arg_parser.add_argument('--param_login', action='store', type=str, required=True, dest='param_login')
+arg_parser.add_argument('--param_password', action='store', type=str, required=True, dest='param_password')
+arg_parser.add_argument('--param_remote_path_root', action='store', type=str, required=True, dest='param_remote_path_root')
 
 args = arg_parser.parse_args()
 print(args)
