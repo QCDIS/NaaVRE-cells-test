@@ -47,6 +47,8 @@ conf_remote_path_ahn = pathlib.Path(param_remote_path_root+'/ahn')
 conf_remote_path_retiled = pathlib.Path(param_remote_path_root + '/retiled_'+param_username)
 
 
+print('recontainerized 2')
+
 def save_chunk_to_laz_file(in_filename, 
                            out_filename, 
                            offset, 
