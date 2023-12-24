@@ -30,10 +30,10 @@ conf_mode = 'webdav'
 hostname = param_hostname
 username = param_username
 password = param_password
-remote_file_path = str(conf_remote_path_geotiffs)
-num_files = conf_num_files
+remote = str(conf_remote_path_geotiffs)
+num = conf_num_files
 mode = conf_mode
-output_dir = '/tmp/data'
+output = '/tmp/data'
 
 import json
 filename = "/tmp/hostname_" + id + ".json"
@@ -48,19 +48,19 @@ filename = "/tmp/password_" + id + ".json"
 file_password = open(filename, "w")
 file_password.write(json.dumps(password))
 file_password.close()
-filename = "/tmp/remote_file_path_" + id + ".json"
-file_remote_file_path = open(filename, "w")
-file_remote_file_path.write(json.dumps(remote_file_path))
-file_remote_file_path.close()
-filename = "/tmp/num_files_" + id + ".json"
-file_num_files = open(filename, "w")
-file_num_files.write(json.dumps(num_files))
-file_num_files.close()
+filename = "/tmp/remote_" + id + ".json"
+file_remote = open(filename, "w")
+file_remote.write(json.dumps(remote))
+file_remote.close()
+filename = "/tmp/num_" + id + ".json"
+file_num = open(filename, "w")
+file_num.write(json.dumps(num))
+file_num.close()
 filename = "/tmp/mode_" + id + ".json"
 file_mode = open(filename, "w")
 file_mode.write(json.dumps(mode))
 file_mode.close()
-filename = "/tmp/output_dir_" + id + ".json"
-file_output_dir = open(filename, "w")
-file_output_dir.write(json.dumps(output_dir))
-file_output_dir.close()
+filename = "/tmp/output_" + id + ".json"
+file_output = open(filename, "w")
+file_output.write(json.dumps(output))
+file_output.close()
