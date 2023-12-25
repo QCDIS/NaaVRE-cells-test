@@ -8,7 +8,7 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--local_path_split', action='store', type=str, required=True, dest='local_path_split')
+arg_parser.add_argument('--path_split', action='store', type=str, required=True, dest='path_split')
 
 arg_parser.add_argument('--split_laz_files', action='store', type=str, required=True, dest='split_laz_files')
 
@@ -18,7 +18,7 @@ print(args)
 
 id = args.id
 
-local_path_split = args.local_path_split.replace('"','')
+path_split = args.path_split.replace('"','')
 import json
 split_laz_files = json.loads(args.split_laz_files)
 
@@ -51,7 +51,7 @@ grid_retile = {
 retiling_input = {
     # 'setup_local_fs': {'tmp_folder': conf_local_tmp.as_posix()},
     'setup_local_fs': {
-        'input_folder': local_path_split,
+        'input_folder': path_split,
         'output_folder': local_path_retiled
     },
     # 'pullremote': conf_remote_path_split.as_posix(),
