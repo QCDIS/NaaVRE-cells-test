@@ -6,6 +6,8 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
+arg_parser.add_argument('--remote_path_geotiffs', action='store', type=str, required=True, dest='remote_path_geotiffs')
+
 arg_parser.add_argument('--param_hostname', action='store', type=str, required=True, dest='param_hostname')
 arg_parser.add_argument('--param_password', action='store', type=str, required=True, dest='param_password')
 arg_parser.add_argument('--param_username', action='store', type=str, required=True, dest='param_username')
@@ -15,25 +17,26 @@ print(args)
 
 id = args.id
 
+remote_path_geotiffs = args.remote_path_geotiffs.replace('"','')
 
 param_hostname = args.param_hostname
 param_password = args.param_password
 param_username = args.param_username
 
-conf_remote_path_geotiffs = pathlib.Path('/webdav/vl-laserfarm/' +  'spiros.koulouzis@lifewatch.eu' + '/geotiffs')
 conf_num_files = 1
 conf_mode = 'webdav'
+conf_local_tmp = pathlib.Path('/tmp/data')
 
-conf_remote_path_geotiffs = pathlib.Path('/webdav/vl-laserfarm/' +  'spiros.koulouzis@lifewatch.eu' + '/geotiffs')
 conf_num_files = 1
 conf_mode = 'webdav'
+conf_local_tmp = pathlib.Path('/tmp/data')
 hostname = param_hostname
 username = param_username
 password = param_password
-remote = str(conf_remote_path_geotiffs)
+remote = str(remote_path_geotiffs)
 num = conf_num_files
 mode = conf_mode
-output = '/tmp/data'
+output = str(conf_local_tmp)
 
 import json
 filename = "/tmp/hostname_" + id + ".json"
