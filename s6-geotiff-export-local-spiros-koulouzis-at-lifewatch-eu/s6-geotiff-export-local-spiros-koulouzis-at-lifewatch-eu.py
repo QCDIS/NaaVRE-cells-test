@@ -8,7 +8,7 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--targets_ply', action='store', type=str, required='True', dest='targets_ply')
+arg_parser.add_argument('--local_path_targets', action='store', type=str, required='True', dest='local_path_targets')
 
 arg_parser.add_argument('--param_hostname', action='store', type=str, required='True', dest='param_hostname')
 arg_parser.add_argument('--param_password', action='store', type=str, required='True', dest='param_password')
@@ -19,7 +19,7 @@ print(args)
 
 id = args.id
 
-targets_ply = args.targets_ply
+local_path_targets = args.local_path_targets
 
 param_hostname = args.param_hostname
 param_password = args.param_password
@@ -35,12 +35,12 @@ conf_remote_path_geotiffs = pathlib.Path('/webdav/vl-laserfarm/' +  '' + '/geoti
 conf_feature_name = 'perc_95_normalized_height'
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_username, 'webdav_password': param_password}
 
-targets_ply
+local_path_targets
 
 
 geotiff_export_input = {
     'setup_local_fs': {
-        'input_folder': targets_ply,
+        'input_folder': local_path_targets,
          'output_folder': conf_local_path_geotiff
         },
     # 'pullremote': conf_remote_path_targets.as_posix(),
