@@ -50,7 +50,7 @@ geotiff_export_input = {
     'data_split': {'xSub': 1, 'ySub': 1},
     'create_subregion_geotiffs': {'output_handle': 'geotiff'},
     'pushremote': conf_remote_path_geotiffs.as_posix(),
-    'cleanlocalfs': {}   
+    # 'cleanlocalfs': {}   
 }
 
 writer = GeotiffWriter(input_dir=conf_feature_name, bands=conf_feature_name, label=conf_feature_name).config(geotiff_export_input).setup_webdav_client(conf_wd_opts)
