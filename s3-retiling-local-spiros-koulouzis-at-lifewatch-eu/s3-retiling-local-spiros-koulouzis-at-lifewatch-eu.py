@@ -66,3 +66,10 @@ for file in split_laz_files:
     retiler = Retiler(clean_file,label=clean_file).config(retiling_input)
     retiler_output = retiler.run()
 
+S3_done = 'True'
+
+import json
+filename = "/tmp/S3_done_" + id + ".json"
+file_S3_done = open(filename, "w")
+file_S3_done.write(json.dumps(S3_done))
+file_S3_done.close()
