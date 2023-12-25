@@ -29,8 +29,14 @@ for folder in tile_folders:
     tiles.append(folder_name)  # Append only the folder name
 print(tiles)
 
+path_retiled = local_path_retiled
+
 import json
 filename = "/tmp/tiles_" + id + ".json"
 file_tiles = open(filename, "w")
 file_tiles.write(json.dumps(tiles))
 file_tiles.close()
+filename = "/tmp/path_retiled_" + id + ".json"
+file_path_retiled = open(filename, "w")
+file_path_retiled.write(json.dumps(path_retiled))
+file_path_retiled.close()
