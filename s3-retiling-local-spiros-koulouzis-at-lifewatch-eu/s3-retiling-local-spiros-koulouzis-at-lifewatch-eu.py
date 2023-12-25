@@ -37,8 +37,6 @@ conf_local_path_split = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'spl
 conf_local_path_retiled = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'retiled')
 split_laz_files
 
-
-
 grid_retile = {
     'min_x': float(conf_min_x),
     'max_x': float(conf_max_x),
@@ -67,11 +65,4 @@ for file in split_laz_files:
     # retiler = Retiler(clean_file,label=clean_file).config(retiling_input).setup_webdav_client(conf_wd_opts)
     retiler = Retiler(clean_file,label=clean_file).config(retiling_input)
     retiler_output = retiler.run()
-    
-local_path_retiled = conf_local_path_retiled
 
-import json
-filename = "/tmp/local_path_retiled_" + id + ".json"
-file_local_path_retiled = open(filename, "w")
-file_local_path_retiled.write(json.dumps(local_path_retiled))
-file_local_path_retiled.close()
