@@ -21,6 +21,7 @@ import json
 tiles = json.loads(args.tiles)
 
 
+conf_local_path_targets = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'targets')
 conf_feature_name = 'perc_95_normalized_height'
 conf_tile_mesh_size = '10.'
 conf_min_x = '-113107.81'
@@ -29,12 +30,12 @@ conf_min_y = '214783.87'
 conf_max_y = '726783.87'
 conf_n_tiles_side = '512'
 conf_local_path_retiled = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'retiled')
-conf_local_path_targets = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'targets')
 conf_attribute = 'raw_classification'
 conf_filter_type= 'select_equal'
 conf_apply_filter_value = '1'
 conf_validate_precision = '0.001'
 
+conf_local_path_targets = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'targets')
 conf_feature_name = 'perc_95_normalized_height'
 conf_tile_mesh_size = '10.'
 conf_min_x = '-113107.81'
@@ -43,14 +44,15 @@ conf_min_y = '214783.87'
 conf_max_y = '726783.87'
 conf_n_tiles_side = '512'
 conf_local_path_retiled = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'retiled')
-conf_local_path_targets = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'targets')
 conf_attribute = 'raw_classification'
 conf_filter_type= 'select_equal'
 conf_apply_filter_value = '1'
 conf_validate_precision = '0.001'
-    
+
 for t in tiles:
+    local_path_targets = os.path.join(conf_local_path_targets, t)
     features = [conf_feature_name]
+
     tile_mesh_size = float(conf_tile_mesh_size)
 
     grid_feature = {
@@ -63,8 +65,8 @@ for t in tiles:
 
     feature_extraction_input = {
         'setup_local_fs': {
-        'input_folder': conf_local_path_retiled,
-        'output_folder': conf_local_path_targets+'/'+t
+            'input_folder': conf_local_path_retiled,
+            'output_folder': local_path_targets
         },
         # 'setup_local_fs': {'tmp_folder': conf_local_tmp.as_posix()},
         # 'pullremote': conf_remote_path_retiled.as_posix(),
@@ -98,18 +100,15 @@ for t in tiles:
     # processing = DataProcessing(t, tile_index=idx,label=t).config(feature_extraction_input).setup_webdav_client(conf_wd_opts)
     processing = DataProcessing(t, tile_index=idx,label=t).config(feature_extraction_input)
     processing.run()
+    target_file = os.path.join(local_path_targets, conf_feature_name,t+'.ply')  
+    target_folder = os.path.join(conf_local_path_targets, conf_feature_name)
+    os.makedirs(target_folder, exist_ok=True)
+    shutil.move(target_file, target_folder)
     
-    folder = os.path.join(conf_local_path_targets, conf_feature_name)
-    os.makedirs(folder, exist_ok=True)
-    
-    file_name = os.path.join(conf_local_path_targets, t, conf_feature_name ,t+'.ply')
-    shutil.move(file_name, folder)
-    
-    
-local_path_targets = conf_local_path_targets
+S5_done = 'True'
 
 import json
-filename = "/tmp/local_path_targets_" + id + ".json"
-file_local_path_targets = open(filename, "w")
-file_local_path_targets.write(json.dumps(local_path_targets))
-file_local_path_targets.close()
+filename = "/tmp/S5_done_" + id + ".json"
+file_S5_done = open(filename, "w")
+file_S5_done.write(json.dumps(S5_done))
+file_S5_done.close()
