@@ -19,6 +19,8 @@ local_path_split = args.local_path_split.replace('"','')
 
 
 
+
+path_split = local_path_split
 split_laz_folder = glob.glob(os.path.join(local_path_split, '*.LAZ'))
 split_laz_files = []
 print("File names ending with .LAZ:")
@@ -29,6 +31,10 @@ print(split_laz_files)
     
 
 import json
+filename = "/tmp/path_split_" + id + ".json"
+file_path_split = open(filename, "w")
+file_path_split.write(json.dumps(path_split))
+file_path_split.close()
 filename = "/tmp/split_laz_files_" + id + ".json"
 file_split_laz_files = open(filename, "w")
 file_split_laz_files.write(json.dumps(split_laz_files))
