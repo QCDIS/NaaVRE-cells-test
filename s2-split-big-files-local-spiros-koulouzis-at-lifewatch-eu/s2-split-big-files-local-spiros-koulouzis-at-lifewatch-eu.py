@@ -91,4 +91,10 @@ for file in laz_files:
         shutil.move(out_filename, conf_local_path_split)
         # client.upload_sync(remote_path=os.path.join(conf_remote_path_split,out_filename), local_path=out_filename)
     
+local_path_split = conf_local_path_split
 
+import json
+filename = "/tmp/local_path_split_" + id + ".json"
+file_local_path_split = open(filename, "w")
+file_local_path_split.write(json.dumps(local_path_split))
+file_local_path_split.close()
