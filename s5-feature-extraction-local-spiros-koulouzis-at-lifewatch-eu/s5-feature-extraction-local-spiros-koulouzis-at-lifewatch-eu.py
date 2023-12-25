@@ -1,6 +1,7 @@
 from laserfarm import DataProcessing
 import os
 import pathlib
+import shutil
 
 import argparse
 arg_parser = argparse.ArgumentParser()
@@ -48,11 +49,8 @@ conf_filter_type= 'select_equal'
 conf_apply_filter_value = '1'
 conf_validate_precision = '0.001'
     
-
-
 for t in tiles:
     features = [conf_feature_name]
-
     tile_mesh_size = float(conf_tile_mesh_size)
 
     grid_feature = {
@@ -66,7 +64,7 @@ for t in tiles:
     feature_extraction_input = {
         'setup_local_fs': {
         'input_folder': conf_local_path_retiled,
-        'output_folder': conf_local_path_targets
+        'output_folder': conf_local_path_targets+'/'+t
         },
         # 'setup_local_fs': {'tmp_folder': conf_local_tmp.as_posix()},
         # 'pullremote': conf_remote_path_retiled.as_posix(),
@@ -100,6 +98,13 @@ for t in tiles:
     # processing = DataProcessing(t, tile_index=idx,label=t).config(feature_extraction_input).setup_webdav_client(conf_wd_opts)
     processing = DataProcessing(t, tile_index=idx,label=t).config(feature_extraction_input)
     processing.run()
+    
+    folder = os.path.join(conf_local_path_targets, conf_feature_name)
+    os.makedirs(folder, exist_ok=True)
+    
+    file_name = os.path.join(conf_local_path_targets, t, conf_feature_name ,t+'.ply')
+    shutil.move(file_name, folder)
+    
     
 local_path_targets = conf_local_path_targets
 
