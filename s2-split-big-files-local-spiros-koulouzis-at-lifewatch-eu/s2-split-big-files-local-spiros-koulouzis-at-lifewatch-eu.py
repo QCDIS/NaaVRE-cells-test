@@ -78,6 +78,8 @@ def split_strategy(filename, max_filesize):
 
 client = Client(conf_wd_opts)
 
+print(conf_local_path_split)
+
 os.makedirs(conf_local_path_split, exist_ok=True)
 
 for file in laz_files:
@@ -89,12 +91,12 @@ for file in laz_files:
         out_filename = save_chunk_to_laz_file(*inp)
         print('out_filename: '+out_filename)
         shutil.move(out_filename, conf_local_path_split)
-        # client.upload_sync(remote_path=os.path.join(conf_remote_path_split,out_filename), local_path=out_filename)
+        # client.upload_sync(remote_path=os.path.join(conf_remote_path_split,out_filename), conf_local_path=out_filename)
     
-local_path_split = conf_local_path_split
+S2_done = 'True'
 
 import json
-filename = "/tmp/local_path_split_" + id + ".json"
-file_local_path_split = open(filename, "w")
-file_local_path_split.write(json.dumps(local_path_split))
-file_local_path_split.close()
+filename = "/tmp/S2_done_" + id + ".json"
+file_S2_done = open(filename, "w")
+file_S2_done.write(json.dumps(S2_done))
+file_S2_done.close()
