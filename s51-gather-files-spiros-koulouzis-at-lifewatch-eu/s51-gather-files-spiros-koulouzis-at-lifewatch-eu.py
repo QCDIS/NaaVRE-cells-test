@@ -24,7 +24,6 @@ conf_local_path_targets = os.path.join( pathlib.Path('/tmp/data').as_posix(), 't
 conf_local_path_targets = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'targets')
 
 
-
 local_path_targets
 
 targets_ply = '/tmp/data/targets/'
