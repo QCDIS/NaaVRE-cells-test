@@ -8,7 +8,7 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--local_path_retiled', action='store', type=str, required=True, dest='local_path_retiled')
+arg_parser.add_argument('--path_retiled', action='store', type=str, required=True, dest='path_retiled')
 
 arg_parser.add_argument('--tiles', action='store', type=str, required=True, dest='tiles')
 
@@ -18,7 +18,7 @@ print(args)
 
 id = args.id
 
-local_path_retiled = args.local_path_retiled.replace('"','')
+path_retiled = args.path_retiled.replace('"','')
 import json
 tiles = json.loads(args.tiles)
 
@@ -66,7 +66,7 @@ for t in tiles:
 
     feature_extraction_input = {
         'setup_local_fs': {
-        'input_folder': local_path_retiled,
+        'input_folder': path_retiled,
         'output_folder': local_path_targets
         },
         # 'setup_local_fs': {'tmp_folder': conf_local_tmp.as_posix()},
