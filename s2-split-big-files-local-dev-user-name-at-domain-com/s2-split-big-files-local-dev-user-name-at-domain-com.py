@@ -35,11 +35,11 @@ param_username = args.param_username
 
 conf_laz_compression_factor = '7'
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_username, 'webdav_password': param_password}
-conf_local_tmp = pathlib.Path('/tmp/data')
+conf_local_path_split = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'split')
 
 conf_laz_compression_factor = '7'
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_username, 'webdav_password': param_password}
-conf_local_tmp = pathlib.Path('/tmp/data')
+conf_local_path_split = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'split')
 
 
 def save_chunk_to_laz_file(in_filename, 
@@ -77,10 +77,10 @@ def split_strategy(filename, max_filesize):
 
 
 client = Client(conf_wd_opts)
-local_path_split = os.path.join(conf_local_tmp.as_posix(), 'split')
-print(local_path_split)
 
-os.makedirs(local_path_split, exist_ok=True)
+print(conf_local_path_split)
+
+os.makedirs(conf_local_path_split, exist_ok=True)
 
 for file in laz_files:
     print('Splitting: '+file )
@@ -90,12 +90,13 @@ for file in laz_files:
     for inp in inps:
         out_filename = save_chunk_to_laz_file(*inp)
         print('out_filename: '+out_filename)
-        shutil.move(out_filename, local_path_split)
-        # client.upload_sync(remote_path=os.path.join(conf_remote_path_split,out_filename), local_path=out_filename)
+        shutil.move(out_filename, conf_local_path_split)
+        # client.upload_sync(remote_path=os.path.join(conf_remote_path_split,out_filename), conf_local_path=out_filename)
     
+S2_done = 'True'
 
 import json
-filename = "/tmp/local_path_split_" + id + ".json"
-file_local_path_split = open(filename, "w")
-file_local_path_split.write(json.dumps(local_path_split))
-file_local_path_split.close()
+filename = "/tmp/S2_done_" + id + ".json"
+file_S2_done = open(filename, "w")
+file_S2_done.write(json.dumps(S2_done))
+file_S2_done.close()
