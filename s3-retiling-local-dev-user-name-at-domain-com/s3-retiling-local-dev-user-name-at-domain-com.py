@@ -8,8 +8,6 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--path_split', action='store', type=str, required=True, dest='path_split')
-
 arg_parser.add_argument('--split_laz_files', action='store', type=str, required=True, dest='split_laz_files')
 
 
@@ -18,27 +16,26 @@ print(args)
 
 id = args.id
 
-path_split = args.path_split.replace('"','')
 import json
 split_laz_files = json.loads(args.split_laz_files)
 
 
-conf_local_tmp = pathlib.Path('/tmp/data')
 conf_min_x = '-113107.81'
 conf_max_x = '398892.19'
 conf_min_y = '214783.87'
 conf_max_y = '726783.87'
 conf_n_tiles_side = '512'
+conf_local_path_split = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'split')
+conf_local_path_retiled = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'retiled')
 
-conf_local_tmp = pathlib.Path('/tmp/data')
 conf_min_x = '-113107.81'
 conf_max_x = '398892.19'
 conf_min_y = '214783.87'
 conf_max_y = '726783.87'
 conf_n_tiles_side = '512'
+conf_local_path_split = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'split')
+conf_local_path_retiled = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'retiled')
 split_laz_files
-
-local_path_retiled = os.path.join(conf_local_tmp.as_posix(), 'retiled')
 
 grid_retile = {
     'min_x': float(conf_min_x),
@@ -51,8 +48,8 @@ grid_retile = {
 retiling_input = {
     # 'setup_local_fs': {'tmp_folder': conf_local_tmp.as_posix()},
     'setup_local_fs': {
-        'input_folder': path_split,
-        'output_folder': local_path_retiled
+        'input_folder': conf_local_path_split,
+        'output_folder': conf_local_path_retiled
     },
     # 'pullremote': conf_remote_path_split.as_posix(),
     'set_grid': grid_retile,
@@ -69,8 +66,10 @@ for file in split_laz_files:
     retiler = Retiler(clean_file,label=clean_file).config(retiling_input)
     retiler_output = retiler.run()
 
+S3_done = 'True'
+
 import json
-filename = "/tmp/local_path_retiled_" + id + ".json"
-file_local_path_retiled = open(filename, "w")
-file_local_path_retiled.write(json.dumps(local_path_retiled))
-file_local_path_retiled.close()
+filename = "/tmp/S3_done_" + id + ".json"
+file_S3_done = open(filename, "w")
+file_S3_done.write(json.dumps(S3_done))
+file_S3_done.close()
