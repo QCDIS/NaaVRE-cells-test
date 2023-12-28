@@ -1,4 +1,5 @@
 import os
+import pathlib
 from matplotlib import pyplot
 import rasterio
 from rasterio.plot import show
@@ -12,8 +13,6 @@ arg_parser.add_argument('--id', action='store', type=str, required=True, dest='i
 
 arg_parser.add_argument('--download_done', action='store', type=str, required=True, dest='download_done')
 
-arg_parser.add_argument('--local_path_geotiff', action='store', type=str, required=True, dest='local_path_geotiff')
-
 
 args = arg_parser.parse_args()
 print(args)
@@ -21,15 +20,16 @@ print(args)
 id = args.id
 
 download_done = args.download_done.replace('"','')
-local_path_geotiff = args.local_path_geotiff.replace('"','')
 
 
+conf_local_path_geotiff = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'geotiff')
 
+conf_local_path_geotiff = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'geotiff')
 
 
 download_done
 
-geo_tiff = os.path.join(local_path_geotiff, 'geotiff_TILE_000_BAND_perc_95_normalized_height.tif')
+geo_tiff = os.path.join(conf_local_path_geotiff, 'geotiff_TILE_000_BAND_perc_95_normalized_height.tif')
 src = rasterio.open(geo_tiff)
 show(src)
 fig, ax = pyplot.subplots(1, figsize=(30, 30))
