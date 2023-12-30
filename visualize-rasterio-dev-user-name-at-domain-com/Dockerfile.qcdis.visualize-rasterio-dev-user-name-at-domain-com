@@ -9,4 +9,5 @@ RUN /venv/bin/conda-unpack
 
 FROM jupyter/base-notebook AS runtime
 COPY --from=build /venv /venv
+COPY visualize-rasterio-dev-user-name-at-domain-com.py .
 COPY visualize-rasterio-dev-user-name-at-domain-com.ipynb .
