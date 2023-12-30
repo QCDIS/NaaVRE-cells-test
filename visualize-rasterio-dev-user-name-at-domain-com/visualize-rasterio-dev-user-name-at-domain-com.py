@@ -27,13 +27,10 @@ parameters['download_done'] = download_done
 conf_local_path_geotiff = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'geotiff')
 parameters['conf_local_path_geotiff'] = conf_local_path_geotiff
 
-
-
 pm.execute_notebook(
     'visualize-rasterio-dev-user-name-at-domain-com.ipynb',
     'visualize-rasterio-dev-user-name-at-domain-com-output.ipynb',
     prepare_only=True,
     parameters=dict(msg=0.6)
 )
-
 
