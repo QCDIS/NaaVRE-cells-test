@@ -18,25 +18,21 @@ args = arg_parser.parse_args()
 print(args)
 
 id = args.id
+parameters = {}
 
 download_done = args.download_done.replace('"','')
+parameters['download_done'] = download_done
 
 
 conf_local_path_geotiff = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'geotiff')
+parameters['conf_local_path_geotiff = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'geotiff')'] = conf_local_path_geotiff = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'geotiff')
 
-conf_local_path_geotiff = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'geotiff')
 
+pm.execute_notebook(
+    'visualize-rasterio-dev-user-name-at-domain-com.ipynb',
+    'visualize-rasterio-dev-user-name-at-domain-com-output.ipynb',
+    prepare_only=True,
+    parameters=dict(msg=0.6)
+)
 
-download_done
-
-geo_tiff = os.path.join(conf_local_path_geotiff, 'geotiff_TILE_000_BAND_perc_95_normalized_height.tif')
-src = rasterio.open(geo_tiff)
-show(src)
-fig, ax = pyplot.subplots(1, figsize=(30, 30))
-show((src, 1), interpolation='none', ax=ax)
-show((src, 1), contour=True, ax=ax)
-pyplot.show()
-show_hist(src, bins=50, lw=0.0, stacked=False, alpha=0.3, histtype='stepfilled', title="Histogram")
-pyplot.show()
-src.close()
 
