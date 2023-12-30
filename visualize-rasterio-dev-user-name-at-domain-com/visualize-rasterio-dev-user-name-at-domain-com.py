@@ -24,7 +24,7 @@ download_done = args.download_done.replace('"','')
 parameters['download_done'] = download_done
 
 
-conf_local_path_geotiff = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'geotiff') = 
+conf_local_path_geotiff = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'geotiff')
 
 
 pm.execute_notebook(
