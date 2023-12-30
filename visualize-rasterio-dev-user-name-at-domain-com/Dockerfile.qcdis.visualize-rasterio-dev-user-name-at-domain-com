@@ -7,7 +7,6 @@ RUN conda-pack -n venv -o /tmp/env.tar && \
     rm /tmp/env.tar
 RUN /venv/bin/conda-unpack
 
-FROM python:3.11-slim-bullseye AS runtime
-RUN apt update -y && apt upgrade -y && apt install jq -y
+FROM jupyter/base-notebook AS runtime
 COPY --from=build /venv /venv
-COPY visualize-rasterio-dev-user-name-at-domain-com.py .
+COPY visualize-rasterio-dev-user-name-at-domain-com.ipynb .
