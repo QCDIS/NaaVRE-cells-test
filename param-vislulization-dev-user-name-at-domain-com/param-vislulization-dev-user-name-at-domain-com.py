@@ -24,8 +24,11 @@ param_password = args.param_password
 param_username = args.param_username
 
 conf_num_files = 1
+
 conf_mode = 'webdav'
+
 conf_local_tmp = pathlib.Path('/tmp/data')
+
 
 conf_num_files = 1
 conf_mode = 'webdav'
