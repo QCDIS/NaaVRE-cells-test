@@ -6,6 +6,8 @@ from rasterio.plot import show
 from rasterio.plot import show_hist
 
 import argparse
+import papermill as pm
+
 arg_parser = argparse.ArgumentParser()
 
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
@@ -31,6 +33,6 @@ pm.execute_notebook(
     'visualize-rasterio-dev-user-name-at-domain-com.ipynb',
     'visualize-rasterio-dev-user-name-at-domain-com-output.ipynb',
     prepare_only=True,
-    parameters=dict(msg=0.6)
+    parameters=dict(parameters)
 )
 
