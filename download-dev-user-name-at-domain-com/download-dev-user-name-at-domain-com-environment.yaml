@@ -5,4 +5,5 @@ dependencies:
   - pip
   - python>=3.8
   - webdavclient3
-
+  - papermill
+  - ipykernel
