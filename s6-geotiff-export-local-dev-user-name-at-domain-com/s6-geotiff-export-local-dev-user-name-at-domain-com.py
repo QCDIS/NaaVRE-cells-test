@@ -26,10 +26,15 @@ param_password = args.param_password
 param_username = args.param_username
 
 conf_local_path_targets = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'targets')
+
 conf_local_path_geotiff = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'geotiff')
+
 conf_remote_path_geotiffs = pathlib.Path('/webdav/vl-laserfarm/' +  '' + '/geotiffs')
+
 conf_feature_name = 'perc_95_normalized_height'
+
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_username, 'webdav_password': param_password}
+
 
 conf_local_path_targets = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'targets')
 conf_local_path_geotiff = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'geotiff')
@@ -57,8 +62,3 @@ writer.run()
 
 remote_path_geotiffs = str(conf_remote_path_geotiffs)
 
-import json
-filename = "/tmp/remote_path_geotiffs_" + id + ".json"
-file_remote_path_geotiffs = open(filename, "w")
-file_remote_path_geotiffs.write(json.dumps(remote_path_geotiffs))
-file_remote_path_geotiffs.close()
