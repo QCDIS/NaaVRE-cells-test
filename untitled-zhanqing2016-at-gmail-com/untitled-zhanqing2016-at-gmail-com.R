@@ -13,6 +13,7 @@ make_option(c("--bk"), action="store", default=NA, type='character', help="my de
 make_option(c("--clamp"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--dplyr"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--id"), action="store", default=NA, type='character', help="my description"),
+make_option(c("--id"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--iris"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--luna"), action="store", default=NA, type='character', help="my description"),
 make_option(c("--terra"), action="store", default=NA, type='character', help="my description")
@@ -26,6 +27,7 @@ bi = opt$bi
 bk = opt$bk
 clamp = opt$clamp
 dplyr = opt$dplyr
+id = opt$id
 id = opt$id
 iris = opt$iris
 luna = opt$luna
@@ -88,7 +90,6 @@ hist(ndvi)
 ?clamp
 veg <- clamp(ndvi, lower= 0.3, upper=1)
 plot(veg,col=rev(terrain.colors(10)))
-
 
 
 
