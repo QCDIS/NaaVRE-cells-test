@@ -26,6 +26,7 @@ id = opt$id
 
 
 c <- a + b
+c
 
 
 
