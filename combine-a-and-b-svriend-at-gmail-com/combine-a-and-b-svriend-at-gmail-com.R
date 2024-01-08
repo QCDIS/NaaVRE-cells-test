@@ -27,7 +27,10 @@ id = opt$id
 
 
 c <- a + b
-c
 
 
 
+# capturing outputs
+file <- file(paste0('/tmp/c_', id, '.json'))
+writeLines(toJSON(c, auto_unbox=TRUE), file)
+close(file)
