@@ -1,3 +1,4 @@
+import numpy as np
 
 import argparse
 arg_parser = argparse.ArgumentParser()
@@ -19,5 +20,5 @@ a = args.a
 param_a = args.param_a
 
 
-print(a, param_a)
+print(a, param_a, np.pi)
 
