@@ -22,11 +22,15 @@ id <- gsub('"', '', opt$id)
 
 
 
-a = "a"
+a = 1
+b = 2
 
 
 
 # capturing outputs
 file <- file(paste0('/tmp/a_', id, '.json'))
 writeLines(toJSON(a, auto_unbox=TRUE), file)
+close(file)
+file <- file(paste0('/tmp/b_', id, '.json'))
+writeLines(toJSON(b, auto_unbox=TRUE), file)
 close(file)
