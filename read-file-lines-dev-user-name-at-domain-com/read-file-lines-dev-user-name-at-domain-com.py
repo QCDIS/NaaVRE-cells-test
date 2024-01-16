@@ -22,7 +22,6 @@ file_path = args.file_path.replace('"','')
 
 conf_data_folder = os.path.join('/tmp','data')
 
-
 conf_data_folder = os.path.join('/tmp','data')
 
 onlyfiles = [f for f in listdir(conf_data_folder) if isfile(join(conf_data_folder, f))]
