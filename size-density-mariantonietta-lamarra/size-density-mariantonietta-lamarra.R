@@ -41,6 +41,12 @@ library("reshape")
 install.packages("dplyr",repos = "http://cran.us.r-project.org")
 library("dplyr")
 
+install.packages("RCurl",repos = "http://cran.us.r-project.org")
+library("RCurl")
+
+install.packages("httr",repos = "http://cran.us.r-project.org")
+library("httr")
+
 
 dataset=read.csv(output_filtering,stringsAsFactors=FALSE,sep = ";", dec = ".")
 
