@@ -23,10 +23,10 @@ id <- gsub('"', '', opt$id)
 
 
 if (!requireNamespace("climwin", quietly = TRUE)) {
-  install.packages("climwin")
+  install.packages("climwin",repos = "http://cran.us.r-project.org")
 }
 if (!requireNamespace("zoo", quietly = TRUE)) {
-  install.packages("zoo")
+  install.packages("zoo",repos = "http://cran.us.r-project.org")
 }
 zoo = ''
 climwin = ''
