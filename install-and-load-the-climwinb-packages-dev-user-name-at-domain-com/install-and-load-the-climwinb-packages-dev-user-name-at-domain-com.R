@@ -42,13 +42,17 @@ temperature_zoo <- zoo::zoo(temperature_data)
 
 rolling_mean_temp <- rollmean(temperature_zoo, k = window_size, fill = 0.0)
 
+temperature_zoo_str <- toString(temperature_zoo)
+rolling_mean_temp_str <- toString(rolling_mean_temp)
+temperature_data_str <- toString(temperature_data)
+
 
 
 
 # capturing outputs
-file <- file(paste0('/tmp/temperature_data_', id, '.json'))
-writeLines(toJSON(temperature_data, auto_unbox=TRUE), file)
+file <- file(paste0('/tmp/rolling_mean_temp_str_', id, '.json'))
+writeLines(toJSON(rolling_mean_temp_str, auto_unbox=TRUE), file)
 close(file)
-file <- file(paste0('/tmp/rolling_mean_temp_', id, '.json'))
-writeLines(toJSON(rolling_mean_temp, auto_unbox=TRUE), file)
+file <- file(paste0('/tmp/temperature_data_str_', id, '.json'))
+writeLines(toJSON(temperature_data_str, auto_unbox=TRUE), file)
 close(file)
