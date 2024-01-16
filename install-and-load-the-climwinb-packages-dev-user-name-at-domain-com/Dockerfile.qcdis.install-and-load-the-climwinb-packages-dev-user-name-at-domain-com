@@ -1,5 +1,4 @@
 
-
 FROM qcdis/conda-lter-life:v0.1 AS build
 COPY install-and-load-the-climwinb-packages-dev-user-name-at-domain-com-environment.yaml .
 RUN conda config --remove channels defaults
