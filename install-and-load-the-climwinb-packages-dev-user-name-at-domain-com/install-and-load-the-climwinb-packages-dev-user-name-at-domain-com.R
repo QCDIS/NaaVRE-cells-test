@@ -23,10 +23,10 @@ id <- gsub('"', '', opt$id)
 
 
 if (!requireNamespace("climwin", quietly = TRUE)) {
-  install.packages("climwin",repos = "http://cran.us.r-project.org")
+  install.packages("climwin")
 }
 if (!requireNamespace("zoo", quietly = TRUE)) {
-  install.packages("zoo",repos = "http://cran.us.r-project.org")
+  install.packages("zoo")
 }
 zoo = ''
 climwin = ''
@@ -41,7 +41,6 @@ window_size <- 30
 temperature_zoo <- zoo::zoo(temperature_data)
 
 rolling_mean_temp <- rollmean(temperature_zoo, k = window_size, fill = 0.0)
-
 
 
 
