@@ -48,7 +48,6 @@ temperature_data_str <- toString(temperature_data)
 
 
 
-
 # capturing outputs
 file <- file(paste0('/tmp/rolling_mean_temp_str_', id, '.json'))
 writeLines(toJSON(rolling_mean_temp_str, auto_unbox=TRUE), file)
