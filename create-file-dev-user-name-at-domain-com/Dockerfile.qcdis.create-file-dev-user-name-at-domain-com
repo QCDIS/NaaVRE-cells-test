@@ -1,7 +1,6 @@
 
 FROM qcdis/miniconda3:v0.1 AS build
 COPY create-file-dev-user-name-at-domain-com-environment.yaml .
-RUN conda config --remove channels defaults
 RUN conda env update -n venv -f create-file-dev-user-name-at-domain-com-environment.yaml
 RUN conda-pack -n venv -o /tmp/env.tar && \
     mkdir /venv && cd /venv && tar xf /tmp/env.tar && \
