@@ -4,8 +4,10 @@ setwd('/app')
 
 library(optparse)
 library(jsonlite)
-import climwin
-import zoo
+install.packages("climwin", repos="http://cran.us.r-project.org")
+library(climwin)
+install.packages("zoo", repos="http://cran.us.r-project.org")
+library(zoo)
 
 
 option_list = list(
