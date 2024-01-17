@@ -38,17 +38,17 @@ conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_userna
 
 
 laz_files = []
-
 if param_remote_server_type == 'minio':
     minio_client = Minio(param_minio_server, secure=True)
     objects = minio_client.list_objects(param_bucket_name, prefix=param_remote_path_root, recursive=True)
-    for obj in objects: 
+    for obj in objects:
         if obj.object_name.lower().endswith('.laz'):
             laz_files.append(obj.object_name.split('/')[-1])
     
 elif param_remote_server_type == 'webdav':
-    webdav_root = param_remote_path_root
-    laz_files = [f for f in list_remote(get_wdclient(conf_wd_opts), pathlib.Path(webdav_root).as_posix())
+    print(param_remote_path_root)
+    webdva_path = param_remote_path_root
+    laz_files = [f for f in list_remote(get_wdclient(conf_wd_opts), pathlib.Path(webdva_path).as_posix())
                  if f.lower().endswith('.laz')]
 print(laz_files)
 
