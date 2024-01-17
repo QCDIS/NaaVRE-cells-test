@@ -1,4 +1,4 @@
-name: ${{github.event.inputs.image_tag}}
+name: Build Cell 
 
 on:
   workflow_dispatch:
