@@ -13,7 +13,7 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--download_done', action='store', type=str, required=True, dest='download_done')
+arg_parser.add_argument('--S6_done', action='store', type=str, required=True, dest='S6_done')
 
 
 args = arg_parser.parse_args()
@@ -22,8 +22,8 @@ print(args)
 id = args.id
 parameters = {}
 
-download_done = args.download_done.replace('"','')
-parameters['download_done'] = download_done
+S6_done = args.S6_done.replace('"','')
+parameters['S6_done'] = S6_done
 
 
 conf_local_path_geotiff = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'geotiff')
