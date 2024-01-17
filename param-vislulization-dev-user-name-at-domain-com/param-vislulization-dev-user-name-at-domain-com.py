@@ -6,6 +6,8 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
+arg_parser.add_argument('--S6_done', action='store', type=str, required=True, dest='S6_done')
+
 arg_parser.add_argument('--param_hostname', action='store', type=str, required=True, dest='param_hostname')
 arg_parser.add_argument('--param_password', action='store', type=str, required=True, dest='param_password')
 arg_parser.add_argument('--param_username', action='store', type=str, required=True, dest='param_username')
@@ -15,6 +17,7 @@ print(args)
 
 id = args.id
 
+S6_done = args.S6_done.replace('"','')
 
 param_hostname = args.param_hostname
 param_password = args.param_password
@@ -33,6 +36,8 @@ conf_remote_path_geotiffs = pathlib.Path('/webdav/vl-laserfarm/' +  '' + '/geoti
 conf_num_files = 1
 conf_visualization_mode = 'webdav'
 conf_local_tmp = pathlib.Path('/tmp/data')
+S6_done
+
 hostname = param_hostname
 username = param_username
 password = param_password
