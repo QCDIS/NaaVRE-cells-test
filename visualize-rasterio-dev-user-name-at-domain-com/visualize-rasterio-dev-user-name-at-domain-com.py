@@ -4,6 +4,7 @@ from matplotlib import pyplot
 import rasterio
 from rasterio.plot import show
 from rasterio.plot import show_hist
+import shutil
 
 import argparse
 import papermill as pm
