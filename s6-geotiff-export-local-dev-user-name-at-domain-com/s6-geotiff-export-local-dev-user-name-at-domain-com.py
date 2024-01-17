@@ -62,3 +62,10 @@ writer.run()
 
 remote_path_geotiffs = str(conf_remote_path_geotiffs)
 
+S6_done = 'True'
+
+import json
+filename = "/tmp/S6_done_" + id + ".json"
+file_S6_done = open(filename, "w")
+file_S6_done.write(json.dumps(S6_done))
+file_S6_done.close()
