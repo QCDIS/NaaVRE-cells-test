@@ -50,7 +50,6 @@ elif param_remote_server_type == 'webdav':
     laz_files = [f for f in list_remote(get_wdclient(conf_wd_opts), pathlib.Path(webdva_path).as_posix())
                  if f.lower().endswith('.laz')]
 print(laz_files)
-print(param_remote_server_type)
 
 import json
 filename = "/tmp/laz_files_" + id + ".json"
