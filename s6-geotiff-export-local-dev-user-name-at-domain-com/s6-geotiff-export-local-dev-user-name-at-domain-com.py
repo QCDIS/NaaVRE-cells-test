@@ -61,7 +61,7 @@ writer = GeotiffWriter(input_dir=conf_feature_name, bands=conf_feature_name, lab
 writer.run()
 
 remote_path_geotiffs = str(conf_remote_path_geotiffs)
-
+print(remote_path_geotiffs)
 S6_done = 'True'
 
 import json
