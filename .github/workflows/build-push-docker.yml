@@ -72,7 +72,7 @@ jobs:
       with:
         context: ${{ github.event.inputs.build_dir }}
         file: ${{ github.event.inputs.build_dir }}/${{ github.event.inputs.dockerfile }}
-        tags: ${{ github.event.inputs.image_repo }}/${{ github.event.inputs.image_tag }}
+        tags: ${{ github.event.inputs.image_repo }}/${{ github.event.inputs.image_tag }}:${{ steps.commit.outputs.short }}
         cache-from: type=gha
         cache-to: type=gha,mode=min
         push: true
