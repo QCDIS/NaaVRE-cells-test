@@ -42,6 +42,9 @@ jobs:
     runs-on: ${{ needs.choose-runner.outputs.runner }}
     name: ${{github.event.inputs.id}}
     steps:
+    - id: commit
+      uses: prompt/actions-commit-hash@v3
+              
     - uses: actions/checkout@v4
 
     - name: Login to GitHub Registry
@@ -61,7 +64,8 @@ jobs:
         echo "Image Repository: ${{ github.event.inputs.image_repo }}"
         echo "Image Tag: ${{ github.event.inputs.image_tag }}"
         echo "Run Identifier: ${{ github.event.inputs.id }}"
-        echo "Version: tags: ${{ github.event.workflow_run.head_sha }}"
+        echo "hash: ${{ steps.commit.outputs.short }}"
+        echo "hash: ${{github.sha}}"
 
     - name: Build docker
       uses: docker/build-push-action@v5
