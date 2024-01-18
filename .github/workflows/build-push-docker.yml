@@ -61,7 +61,7 @@ jobs:
         echo "Image Repository: ${{ github.event.inputs.image_repo }}"
         echo "Image Tag: ${{ github.event.inputs.image_tag }}"
         echo "Run Identifier: ${{ github.event.inputs.id }}"
-        echo "Version: tags: "${{ github.event.workflow_run.head_sha }}"
+        echo "Version: tags: ${{ github.event.workflow_run.head_sha }}"
 
     - name: Build docker
       uses: docker/build-push-action@v5
