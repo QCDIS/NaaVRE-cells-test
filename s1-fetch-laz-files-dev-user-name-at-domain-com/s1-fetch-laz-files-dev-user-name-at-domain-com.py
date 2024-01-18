@@ -44,7 +44,6 @@ if param_remote_server_type == 'minio':
     for obj in objects:
         if obj.object_name.lower().endswith('.laz'):
             laz_files.append(obj.object_name.split('/')[-1])
-    
 elif param_remote_server_type == 'webdav':
     print(param_remote_path_root)
     webdva_path = param_remote_path_root
