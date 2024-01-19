@@ -4,6 +4,8 @@ channels:
 dependencies:
   - pip
   - python>=3.8
+  - webdavclient3
   - numpy
   - laspy
-  - webdavclient3
+  - papermill
+  - ipykernel
