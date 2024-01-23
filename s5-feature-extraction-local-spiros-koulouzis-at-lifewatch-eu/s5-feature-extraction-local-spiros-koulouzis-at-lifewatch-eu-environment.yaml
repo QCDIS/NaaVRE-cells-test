@@ -6,3 +6,5 @@ dependencies:
   - python>=3.8
   - pip:
     - git+https://github.com/QCDIS/Laserfarm.git
+  - papermill
+  - ipykernel
