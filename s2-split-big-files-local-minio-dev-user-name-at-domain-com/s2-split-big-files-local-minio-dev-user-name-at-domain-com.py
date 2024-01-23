@@ -44,7 +44,7 @@ conf_local_path_split = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'spl
 
 conf_local_tmp = pathlib.Path('/tmp/data')
 
-conf_remote_path_root = '/'+'/'.join(path_parts[1:])
+conf_remote_path_root = '/'.join(path_parts[1:])
 
 conf_bucket_name = path_parts[0]
 
@@ -54,7 +54,7 @@ conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_userna
 conf_minio_server = hostname+':'+port
 conf_local_path_split = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'split')
 conf_local_tmp = pathlib.Path('/tmp/data')
-conf_remote_path_root = '/'+'/'.join(path_parts[1:])
+conf_remote_path_root = '/'.join(path_parts[1:])
 conf_bucket_name = path_parts[0]
 
 
