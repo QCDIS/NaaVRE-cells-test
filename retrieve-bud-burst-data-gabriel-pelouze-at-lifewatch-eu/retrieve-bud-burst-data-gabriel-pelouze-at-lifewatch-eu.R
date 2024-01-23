@@ -73,6 +73,8 @@ param_dataverse_api_key = opt$param_dataverse_api_key
 
 
 
+dir.create(here::here("data"))
+
 
 retrieve_dataverse_data <- function(dataset,
                                     version = ":latest",
