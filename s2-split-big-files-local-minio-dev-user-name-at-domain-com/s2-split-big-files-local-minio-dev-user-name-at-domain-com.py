@@ -112,7 +112,7 @@ for file in laz_files:
         if os.path.exists(split_path):
             os.remove(split_path)
         shutil.move(out_filename, conf_local_path_split)
-    
+
 S2_done = 'True'
 
 import json
