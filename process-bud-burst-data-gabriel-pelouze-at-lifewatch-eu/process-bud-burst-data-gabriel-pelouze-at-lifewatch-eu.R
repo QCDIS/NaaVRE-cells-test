@@ -83,9 +83,9 @@ event <- read.csv(event_file)
 occ <- read.csv(occurrence_file)
 mof <- read.csv(extendedmeasurementorfact_file)
 
-event_file = event_file
-occurrence_file = occurrence_file
-extendedmeasurementorfact_file = extendedmeasurementorfact_file
+event_file_ = event_file
+occurrence_file_ = occurrence_file
+extendedmeasurementorfact_file_ = extendedmeasurementorfact_file
 
 d_bb <- dplyr::left_join(event, mof, by = "eventID")
 
@@ -162,14 +162,14 @@ write.csv(bud_burst_dates, budburst_file, row.names = FALSE)
 
 
 # capturing outputs
-file <- file(paste0('/tmp/event_file_', id, '.json'))
-writeLines(toJSON(event_file, auto_unbox=TRUE), file)
+file <- file(paste0('/tmp/event_file__', id, '.json'))
+writeLines(toJSON(event_file_, auto_unbox=TRUE), file)
 close(file)
-file <- file(paste0('/tmp/occurrence_file_', id, '.json'))
-writeLines(toJSON(occurrence_file, auto_unbox=TRUE), file)
+file <- file(paste0('/tmp/occurrence_file__', id, '.json'))
+writeLines(toJSON(occurrence_file_, auto_unbox=TRUE), file)
 close(file)
-file <- file(paste0('/tmp/extendedmeasurementorfact_file_', id, '.json'))
-writeLines(toJSON(extendedmeasurementorfact_file, auto_unbox=TRUE), file)
+file <- file(paste0('/tmp/extendedmeasurementorfact_file__', id, '.json'))
+writeLines(toJSON(extendedmeasurementorfact_file_, auto_unbox=TRUE), file)
 close(file)
 file <- file(paste0('/tmp/budburst_file_', id, '.json'))
 writeLines(toJSON(budburst_file, auto_unbox=TRUE), file)
