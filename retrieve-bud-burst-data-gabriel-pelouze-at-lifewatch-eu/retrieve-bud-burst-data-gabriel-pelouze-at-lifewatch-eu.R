@@ -25,6 +25,10 @@ param_dataverse_api_key = opt$param_dataverse_api_key
 
 
 
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load("dplyr", "purrr", "stringr", "httr", "jsonlite", "readr", "here", "lubridate", "tidyr", "taxize", "geosphere", "climwin")
+
+
 retrieve_dataverse_data <- function(dataset,
                                     version = ":latest",
                                     server = "demo.dataverse.nl",
