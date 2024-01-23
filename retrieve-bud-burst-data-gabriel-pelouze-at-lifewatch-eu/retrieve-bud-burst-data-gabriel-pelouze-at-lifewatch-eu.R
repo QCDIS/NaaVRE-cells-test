@@ -9,8 +9,7 @@ library(jsonlite)
 option_list = list(
 
 make_option(c("--id"), action="store", default=NA, type="character", help="my description"), 
-make_option(c("--param_dataverse_api_key"), action="store", default=NA, type="character", help="my description"), 
-make_option(c("--param_knmi_edr_api_key"), action="store", default=NA, type="character", help="my description")
+make_option(c("--param_dataverse_api_key"), action="store", default=NA, type="character", help="my description")
 
 )
 
@@ -21,7 +20,6 @@ opt = parse_args(OptionParser(option_list=option_list))
 id <- gsub('"', '', opt$id)
 
 param_dataverse_api_key = opt$param_dataverse_api_key
-param_knmi_edr_api_key = opt$param_knmi_edr_api_key
 
 
 
@@ -30,7 +28,7 @@ param_knmi_edr_api_key = opt$param_knmi_edr_api_key
 retrieve_dataverse_data <- function(dataset,
                                     version = ":latest",
                                     server = "demo.dataverse.nl",
-                                    key = dataverse_api_key) {
+                                    key = param_dataverse_api_key) {
 
   # Check if dataset is provided in right format (i.e., starting with "doi:")
   if(!stringr::str_starts(string = dataset, pattern = "doi:")) {
