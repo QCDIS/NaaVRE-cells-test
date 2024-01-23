@@ -4,6 +4,54 @@ setwd('/app')
 
 library(optparse)
 library(jsonlite)
+if (!requireNamespace("climwin", quietly = TRUE)) {
+install.packages("climwin", repos="http://cran.us.r-project.org")
+}
+library(climwin)
+if (!requireNamespace("dplyr", quietly = TRUE)) {
+install.packages("dplyr", repos="http://cran.us.r-project.org")
+}
+library(dplyr)
+if (!requireNamespace("geosphere", quietly = TRUE)) {
+install.packages("geosphere", repos="http://cran.us.r-project.org")
+}
+library(geosphere)
+if (!requireNamespace("here", quietly = TRUE)) {
+install.packages("here", repos="http://cran.us.r-project.org")
+}
+library(here)
+if (!requireNamespace("httr", quietly = TRUE)) {
+install.packages("httr", repos="http://cran.us.r-project.org")
+}
+library(httr)
+if (!requireNamespace("jsonlite", quietly = TRUE)) {
+install.packages("jsonlite", repos="http://cran.us.r-project.org")
+}
+library(jsonlite)
+if (!requireNamespace("lubridate", quietly = TRUE)) {
+install.packages("lubridate", repos="http://cran.us.r-project.org")
+}
+library(lubridate)
+if (!requireNamespace("purrr", quietly = TRUE)) {
+install.packages("purrr", repos="http://cran.us.r-project.org")
+}
+library(purrr)
+if (!requireNamespace("readr", quietly = TRUE)) {
+install.packages("readr", repos="http://cran.us.r-project.org")
+}
+library(readr)
+if (!requireNamespace("stringr", quietly = TRUE)) {
+install.packages("stringr", repos="http://cran.us.r-project.org")
+}
+library(stringr)
+if (!requireNamespace("taxize", quietly = TRUE)) {
+install.packages("taxize", repos="http://cran.us.r-project.org")
+}
+library(taxize)
+if (!requireNamespace("tidyr", quietly = TRUE)) {
+install.packages("tidyr", repos="http://cran.us.r-project.org")
+}
+library(tidyr)
 
 
 option_list = list(
@@ -24,9 +72,6 @@ param_dataverse_api_key = opt$param_dataverse_api_key
 
 
 
-
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load("dplyr", "purrr", "stringr", "httr", "jsonlite", "readr", "here", "lubridate", "tidyr", "taxize", "geosphere", "climwin")
 
 
 retrieve_dataverse_data <- function(dataset,
@@ -233,7 +278,8 @@ event <-
   # Rename "Hoge Veluwe" back to original name
   dplyr::mutate(verbatimLocality = stringr::str_replace(string = verbatimLocality, pattern = "_", replacement = " "))
 
-write.csv(event, file = here::here("data", "event.csv"), row.names = FALSE)
+event_file = here::here("data", "event.csv")
+write.csv(event, file = event_file, row.names = FALSE)
 
 
 
@@ -302,7 +348,8 @@ occurrence <-
                 "occurrenceRemarks", "organismID", "scientificName", "kingdom", "phylum", "class", "order",
                 "family", "genus", "specificEpithet")
 
-write.csv(occurrence, file = here::here("data", "occurrence.csv"), row.names = FALSE)
+occurrence_file = here::here("data", "occurrence.csv")
+write.csv(occurrence, file = occurrence_file, row.names = FALSE)
 
 
 measurement_or_fact <-
@@ -336,7 +383,18 @@ measurement_or_fact <-
   dplyr::select("measurementID", "eventID", "measurementType", "measurementValue",
                 "measurementUnit", "measurementMethod", "measurementRemarks")
 
-write.csv(measurement_or_fact, file = here::here("data", "extendedmeasurementorfact.csv"), row.names = FALSE)
+extendedmeasurementorfact_file = here::here("data", "extendedmeasurementorfact.csv")
+write.csv(measurement_or_fact, file = extendedmeasurementorfact_file, row.names = FALSE)
 
 
 
+# capturing outputs
+file <- file(paste0('/tmp/event_file_', id, '.json'))
+writeLines(toJSON(event_file, auto_unbox=TRUE), file)
+close(file)
+file <- file(paste0('/tmp/occurrence_file_', id, '.json'))
+writeLines(toJSON(occurrence_file, auto_unbox=TRUE), file)
+close(file)
+file <- file(paste0('/tmp/extendedmeasurementorfact_file_', id, '.json'))
+writeLines(toJSON(extendedmeasurementorfact_file, auto_unbox=TRUE), file)
+close(file)
