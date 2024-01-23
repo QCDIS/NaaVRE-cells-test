@@ -158,6 +158,15 @@ write.csv(bud_burst_dates, budburst_file, row.names = FALSE)
 
 
 # capturing outputs
+file <- file(paste0('/tmp/event_file_', id, '.json'))
+writeLines(toJSON(event_file, auto_unbox=TRUE), file)
+close(file)
+file <- file(paste0('/tmp/occurrence_file_', id, '.json'))
+writeLines(toJSON(occurrence_file, auto_unbox=TRUE), file)
+close(file)
+file <- file(paste0('/tmp/extendedmeasurementorfact_file_', id, '.json'))
+writeLines(toJSON(extendedmeasurementorfact_file, auto_unbox=TRUE), file)
+close(file)
 file <- file(paste0('/tmp/budburst_file_', id, '.json'))
 writeLines(toJSON(budburst_file, auto_unbox=TRUE), file)
 close(file)
