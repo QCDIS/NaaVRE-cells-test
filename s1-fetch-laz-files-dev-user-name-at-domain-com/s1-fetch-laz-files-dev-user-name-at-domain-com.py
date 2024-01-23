@@ -29,14 +29,14 @@ conf_minio_server = hostname+':'+port
 
 conf_bucket_name = path_parts[0]
 
-conf_remote_path_root = '/'+'/'.join(path_parts[1:])
+conf_remote_path_root = '/'.join(path_parts[1:])
 
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_username, 'webdav_password': param_password}
 
 
 conf_minio_server = hostname+':'+port
 conf_bucket_name = path_parts[0]
-conf_remote_path_root = '/'+'/'.join(path_parts[1:])
+conf_remote_path_root = '/'.join(path_parts[1:])
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_username, 'webdav_password': param_password}
 
 
