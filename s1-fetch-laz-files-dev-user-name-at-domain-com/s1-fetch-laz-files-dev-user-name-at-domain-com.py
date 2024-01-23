@@ -25,7 +25,7 @@ param_password = args.param_password
 param_remote_server_type = args.param_remote_server_type
 param_username = args.param_username
 
-conf_minio_server = parsed_url.hostname+':'+str(parsed_url.port)
+conf_minio_server = hostname+':'+port
 
 conf_bucket_name = path_parts[0]
 
@@ -34,7 +34,7 @@ conf_remote_path_root = '/'+'/'.join(path_parts[1:])
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_username, 'webdav_password': param_password}
 
 
-conf_minio_server = parsed_url.hostname+':'+str(parsed_url.port)
+conf_minio_server = hostname+':'+port
 conf_bucket_name = path_parts[0]
 conf_remote_path_root = '/'+'/'.join(path_parts[1:])
 conf_wd_opts = { 'webdav_hostname': param_hostname, 'webdav_login': param_username, 'webdav_password': param_password}
