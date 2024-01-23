@@ -21,12 +21,19 @@ split_laz_files = json.loads(args.split_laz_files)
 
 
 conf_min_x = '-113107.81'
+
 conf_max_x = '398892.19'
+
 conf_min_y = '214783.87'
+
 conf_max_y = '726783.87'
+
 conf_n_tiles_side = '512'
+
 conf_local_path_split = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'split')
+
 conf_local_path_retiled = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'retiled')
+
 
 conf_min_x = '-113107.81'
 conf_max_x = '398892.19'
