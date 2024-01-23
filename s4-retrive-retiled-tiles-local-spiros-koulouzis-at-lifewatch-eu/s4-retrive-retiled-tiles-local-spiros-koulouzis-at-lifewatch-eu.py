@@ -8,7 +8,7 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('--id', action='store', type=str, required=True, dest='id')
 
 
-arg_parser.add_argument('--S3_done', action='store', type=str, required='True', dest='S3_done')
+arg_parser.add_argument('--S3_done', action='store', type=str, required=True, dest='S3_done')
 
 
 args = arg_parser.parse_args()
@@ -16,10 +16,11 @@ print(args)
 
 id = args.id
 
-S3_done = args.S3_done
+S3_done = args.S3_done.replace('"','')
 
 
 conf_local_path_retiled = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'retiled')
+
 
 conf_local_path_retiled = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'retiled')
 
