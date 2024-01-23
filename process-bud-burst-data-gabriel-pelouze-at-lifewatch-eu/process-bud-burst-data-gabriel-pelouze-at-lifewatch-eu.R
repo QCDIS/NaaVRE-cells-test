@@ -83,6 +83,10 @@ event <- read.csv(event_file)
 occ <- read.csv(occurrence_file)
 mof <- read.csv(extendedmeasurementorfact_file)
 
+event_file = event_file
+occurrence_file = occurrence_file
+extendedmeasurementorfact_file = extendedmeasurementorfact_file
+
 d_bb <- dplyr::left_join(event, mof, by = "eventID")
 
 d_bb <-
