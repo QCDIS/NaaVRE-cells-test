@@ -22,18 +22,31 @@ tiles = json.loads(args.tiles)
 
 
 conf_local_path_targets = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'targets')
+
 conf_feature_name = 'perc_95_normalized_height'
+
 conf_tile_mesh_size = '10.'
+
 conf_min_x = '-113107.81'
+
 conf_max_x = '398892.19'
+
 conf_min_y = '214783.87'
+
 conf_max_y = '726783.87'
+
 conf_n_tiles_side = '512'
+
 conf_local_path_retiled = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'retiled')
+
 conf_attribute = 'raw_classification'
-conf_filter_type= 'select_equal'
+
+conf_filter_type = 'select_equal'
+
 conf_apply_filter_value = '1'
+
 conf_validate_precision = '0.001'
+
 
 conf_local_path_targets = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'targets')
 conf_feature_name = 'perc_95_normalized_height'
