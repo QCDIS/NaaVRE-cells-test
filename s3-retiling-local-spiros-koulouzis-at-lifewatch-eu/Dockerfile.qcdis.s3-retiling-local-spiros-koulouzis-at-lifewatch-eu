@@ -1,7 +1,6 @@
 
 FROM qcdis/miniconda3-pdal:v0.14 AS build
 COPY s3-retiling-local-spiros-koulouzis-at-lifewatch-eu-environment.yaml .
-RUN conda config --remove channels defaults || true
 RUN conda env update -n venv -f s3-retiling-local-spiros-koulouzis-at-lifewatch-eu-environment.yaml
 RUN conda-pack -n venv -o /tmp/env.tar && \
     mkdir /venv && cd /venv && tar xf /tmp/env.tar && \
