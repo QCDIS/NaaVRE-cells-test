@@ -4,11 +4,60 @@ setwd('/app')
 
 library(optparse)
 library(jsonlite)
+if (!requireNamespace("climwin", quietly = TRUE)) {
+install.packages("climwin", repos="http://cran.us.r-project.org")
+}
+library(climwin)
+if (!requireNamespace("dplyr", quietly = TRUE)) {
+install.packages("dplyr", repos="http://cran.us.r-project.org")
+}
+library(dplyr)
+if (!requireNamespace("geosphere", quietly = TRUE)) {
+install.packages("geosphere", repos="http://cran.us.r-project.org")
+}
+library(geosphere)
+if (!requireNamespace("here", quietly = TRUE)) {
+install.packages("here", repos="http://cran.us.r-project.org")
+}
+library(here)
+if (!requireNamespace("httr", quietly = TRUE)) {
+install.packages("httr", repos="http://cran.us.r-project.org")
+}
+library(httr)
+if (!requireNamespace("jsonlite", quietly = TRUE)) {
+install.packages("jsonlite", repos="http://cran.us.r-project.org")
+}
+library(jsonlite)
+if (!requireNamespace("lubridate", quietly = TRUE)) {
+install.packages("lubridate", repos="http://cran.us.r-project.org")
+}
+library(lubridate)
+if (!requireNamespace("purrr", quietly = TRUE)) {
+install.packages("purrr", repos="http://cran.us.r-project.org")
+}
+library(purrr)
+if (!requireNamespace("readr", quietly = TRUE)) {
+install.packages("readr", repos="http://cran.us.r-project.org")
+}
+library(readr)
+if (!requireNamespace("stringr", quietly = TRUE)) {
+install.packages("stringr", repos="http://cran.us.r-project.org")
+}
+library(stringr)
+if (!requireNamespace("taxize", quietly = TRUE)) {
+install.packages("taxize", repos="http://cran.us.r-project.org")
+}
+library(taxize)
+if (!requireNamespace("tidyr", quietly = TRUE)) {
+install.packages("tidyr", repos="http://cran.us.r-project.org")
+}
+library(tidyr)
 
 
 option_list = list(
 
 make_option(c("--id"), action="store", default=NA, type="character", help="my description"), 
+make_option(c("--my_input"), action="store", default=NA, type="numeric", help="my description"), 
 make_option(c("--param_dataverse_api_key"), action="store", default=NA, type="character", help="my description")
 
 )
@@ -18,6 +67,7 @@ opt = parse_args(OptionParser(option_list=option_list))
 
 
 id <- gsub('"', '', opt$id)
+my_input = opt$my_input
 
 param_dataverse_api_key = opt$param_dataverse_api_key
 
