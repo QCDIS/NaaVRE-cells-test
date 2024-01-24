@@ -21,7 +21,6 @@ S3_done = args.S3_done.replace('"','')
 
 conf_local_path_retiled = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'retiled')
 
-
 conf_local_path_retiled = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'retiled')
 
 S3_done 
