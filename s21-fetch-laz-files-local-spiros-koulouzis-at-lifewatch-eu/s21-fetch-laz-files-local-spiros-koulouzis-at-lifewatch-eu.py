@@ -21,7 +21,6 @@ S2_done = args.S2_done.replace('"','')
 
 conf_local_path_split = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'split')
 
-
 conf_local_path_split = os.path.join( pathlib.Path('/tmp/data').as_posix(), 'split')
 
 S2_done 
