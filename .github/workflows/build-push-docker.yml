@@ -91,7 +91,7 @@ jobs:
         echo "Run Identifier: ${{ github.event.inputs.id }}"
         echo "hash: ${{ steps.commit.outputs.short }}"
         echo "hash: ${{github.sha}}"
-        echo "Container Regisrty  ${{ env.REGISTRY_NAME }}"
+        echo "Container Regisrty  ${{ vars.REGISTRY_NAME || 'ghcr.io' }}"
         echo "docker_tag: ${{steps.set-docker-tag.outputs.docker_tag}}"
       
     - name: Build docker
