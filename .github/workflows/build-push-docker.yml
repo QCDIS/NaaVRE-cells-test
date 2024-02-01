@@ -91,7 +91,7 @@ jobs:
         echo "Run Identifier: ${{ github.event.inputs.id }}"
         echo "hash: ${{ steps.commit.outputs.short }}"
         echo "hash: ${{github.sha}}"
-        echo "hash: ${{steps.set-docker-tag.docker_tag}}"
+        echo "docker_tag: ${{steps.set-docker-tag.outputs.docker_tag}}"
       
     - name: Build docker
       uses: docker/build-push-action@v5
