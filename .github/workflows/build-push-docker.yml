@@ -79,7 +79,7 @@ jobs:
           DOCKER_TAG="${{ github.event.inputs.image_repo }}/${{ github.event.inputs.image_tag }}"
         fi
         echo "Setting Docker Image Tag to: $DOCKER_TAG"
-        echo "docker_tag=$DOCKER_TAG" >> $GITHUB_ENV
+        echo "docker_tag=$DOCKER_TAG" >> "$GITHUB_OUTPUT"
       shell: bash
 
     - name: Print variabls
